@@ -3,10 +3,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Venda de ingressos</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <div form="center">
+        <h:form>
+            <h:commandLink action="#{TeatroBean.cadastra()}">Cadastro Teatro</h:commandLink><br/>
+        </h:form>
+        <h:form>
+            <h:commandLink action="#{SiteBean.cadastra()}">Cadastro Site</h:commandLink><br/>
+        </h:form>
+        <h:form>
+            <h:commandLink action="#{PromocaoBean.cadastra()}">Cadastro Promoção</h:commandLink><br/>
+        </h:form>
+        </div>
     </h:body>
 </html>
 
