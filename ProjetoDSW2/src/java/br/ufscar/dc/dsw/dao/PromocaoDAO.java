@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 public class PromocaoDAO extends GenericDAO<Promocao> {
     @Override
@@ -52,5 +53,23 @@ public class PromocaoDAO extends GenericDAO<Promocao> {
         tx.begin();
         em.remove(promocao);
         tx.commit();
+    }
+    
+    public List<Promocao> getByCNPJ(String cnpj) {
+        EntityManager em = this.getEntityManager();
+        String sql = "SELECT p FROM Promocao p "
+                + "WHERE p.CNPJ = :cnpj";
+        TypedQuery<Promocao> q = em.createQuery(sql, Promocao.class);
+        q.setParameter("cnpj", cnpj);
+        return q.getResultList();
+    }
+    
+    public List<Promocao> getByUrl(String url) {
+        EntityManager em = this.getEntityManager();
+        String sql = "SELECT p FROM Promocao p "
+                + "WHERE p.Url = :url";
+        TypedQuery<Promocao> q = em.createQuery(sql, Promocao.class);
+        q.setParameter("url", url);
+        return q.getResultList();
     }
 }
