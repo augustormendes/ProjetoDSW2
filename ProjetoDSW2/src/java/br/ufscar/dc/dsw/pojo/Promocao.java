@@ -1,14 +1,65 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.ufscar.dc.dsw.pojo;
 
-/**
- *
- * @author augusto
- */
-public class Promocao {
+import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity 
+public class Promocao implements Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;    
+    private float preco;
+    private Date horario;
     
+    @ManyToOne @JoinColumn private SiteVendas site;
+    @ManyToOne @JoinColumn private SalaTeatro sala;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public float getPreco() {
+        return preco;
+    }
+
+    public void setPreco(float preco) {
+        this.preco = preco;
+    }
+
+    public Date getHorario() {
+        return horario;
+    }
+
+    public void setHorario(Date horario) {
+        this.horario = horario;
+    }
+
+    public SiteVendas getSite() {
+        return site;
+    }
+
+    public void setSite(SiteVendas site) {
+        this.site = site;
+    }
+
+    public SalaTeatro getSala() {
+        return sala;
+    }
+
+    public void setSala(SalaTeatro sala) {
+        this.sala = sala;
+    }
+ 
 }
