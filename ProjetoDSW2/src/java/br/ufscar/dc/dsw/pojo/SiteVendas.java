@@ -3,17 +3,22 @@ package br.ufscar.dc.dsw.pojo;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class SiteVendas implements Serializable{
     @Id
-    private String url;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     
-    private String email;
-    private String senha;
+    private String url;
     private String nome;
     private String telefone;
+    @OneToOne @JoinColumn private Usuario usuario;
 
     public String getUrl() {
         return url;
@@ -23,21 +28,6 @@ public class SiteVendas implements Serializable{
         this.url = url;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
 
     public String getNome() {
         return nome;
