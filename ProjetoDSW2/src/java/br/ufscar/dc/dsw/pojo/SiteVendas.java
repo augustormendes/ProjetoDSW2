@@ -19,6 +19,10 @@ public class SiteVendas implements Serializable{
     private String nome;
     private String telefone;
     @OneToOne @JoinColumn private Usuario usuario;
+    
+    public Long getId() {
+        return id;
+    }
 
     public String getUrl() {
         return url;

@@ -50,7 +50,7 @@ public class SalaTeatroDAO extends GenericDAO<SalaTeatro> {
     public void delete(SalaTeatro sala) {
         EntityManager em = this.getEntityManager();
         EntityTransaction tx = em.getTransaction();
-        sala = em.getReference(SalaTeatro.class, sala.getCNPJ());
+        sala = em.getReference(SalaTeatro.class, sala.getId());
         tx.begin();
         em.remove(sala);
         tx.commit();

@@ -51,7 +51,7 @@ public class SiteVendasDAO extends GenericDAO<SiteVendas> {
     public void delete(SiteVendas site) {
         EntityManager em = this.getEntityManager();
         EntityTransaction tx = em.getTransaction();
-        site = em.getReference(SiteVendas.class, site.getUrl());
+        site = em.getReference(SiteVendas.class, site.getId());
         tx.begin();
         em.remove(site);
         tx.commit();
