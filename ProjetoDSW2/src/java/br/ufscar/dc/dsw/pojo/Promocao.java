@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity 
 public class Promocao implements Serializable{
@@ -17,7 +19,7 @@ public class Promocao implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;    
     private float preco;
-    private Date horario;
+    @Temporal(TemporalType.TIMESTAMP)private Date horario;
     
     @ManyToOne @JoinColumn private SiteVendas site;
     @ManyToOne @JoinColumn private SalaTeatro sala;

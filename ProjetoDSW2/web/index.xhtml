@@ -1,22 +1,66 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Venda de ingressos</title>
     </h:head>
     <h:body>
+        <!--
         <div form="center">
         <h:form>
             <h:commandLink action="#{TeatroBean.cadastra()}">Cadastro Teatro</h:commandLink><br/>
         </h:form>
         <h:form>
-            <h:commandLink action="#{SiteBean.cadastra()}">Cadastro Site</h:commandLink><br/>
+            <h:commandLink action="#{siteVendasBean.cadastra()}">Cadastro Site</h:commandLink><br/>
         </h:form>
         <h:form>
             <h:commandLink action="#{PromocaoBean.cadastra()}">Cadastro Promoção</h:commandLink><br/>
         </h:form>
         </div>
+        -->
+          <style>
+              
+          .ui-menu.ui-menubar {
+              background-color: #212529 !important;
+             background: #ffffff;
+             font-family: sans-serif;
+             font-weight: 400;
+             line-height: 1.5;
+             text-align: left;
+             font-size: 1rem;
+             margin-top: -9px;
+            }
+            .ui-menuitem{
+               padding-right: 30px !important;
+               color: aqua !important;
+               
+            }
+            
+            .ui-menubar .ui-menuitem-link{
+                color: #b7acac !important;
+            }
+            .ui-state-hover{
+                background-color: #212529 !important;
+                background-image: none !important;
+            }
+        </style>
+  
+        <h:form>
+        <p:growl id ="messages"/>
+        <p:menubar>
+            <p:menuitem value ="Venda de Ingressos" style="color: #eeeef2 !important" ></p:menuitem>
+            <p:menuitem value ="Teatro">
+            </p:menuitem>
+            <p:menuitem value ="Site" action="#{siteVendasBean.cadastra()}" ajax="false">
+            </p:menuitem>
+            <p:menuitem value ="Promocão">
+            </p:menuitem>
+        </p:menubar>
+        </h:form>
+       
+        
     </h:body>
 </html>
 

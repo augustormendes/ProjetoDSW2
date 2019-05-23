@@ -2,11 +2,13 @@
 package br.ufscar.dc.dsw.pojo;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -16,9 +18,12 @@ public class SiteVendas implements Serializable{
     private Long id;
     
     private String url;
+
+   
     private String nome;
     private String telefone;
-    @OneToOne @JoinColumn private Usuario usuario;
+    @OneToOne (cascade=CascadeType.PERSIST) @JoinColumn
+    private Usuario usuario;
     
     public Long getId() {
         return id;
@@ -52,5 +57,12 @@ public class SiteVendas implements Serializable{
      @Override
     public String toString(){
     return url;
+    }
+     public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

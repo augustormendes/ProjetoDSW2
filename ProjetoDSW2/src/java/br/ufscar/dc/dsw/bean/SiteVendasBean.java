@@ -7,6 +7,7 @@ package br.ufscar.dc.dsw.bean;
 
 import br.ufscar.dc.dsw.dao.SiteVendasDAO;
 import br.ufscar.dc.dsw.pojo.SiteVendas;
+import br.ufscar.dc.dsw.pojo.Usuario;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
@@ -23,14 +24,18 @@ import javax.faces.bean.SessionScoped;
 public class SiteVendasBean {
     
     private SiteVendas site;
-    
     public String lista(){
         return "site/index.xhtml";
     }
     
     public String cadastra(){
         site = new SiteVendas();
-        return "form.xhtml?faces-redirect =true";
+        Usuario u = new Usuario();
+        u.setEmail(null);
+        u.setSenha(null);
+        site.setUsuario(u);
+        
+        return "CadastroSite.xhtml?faces-redirect =true";
     }
     
     public String edita(Long id){
