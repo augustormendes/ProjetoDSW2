@@ -29,7 +29,7 @@ public class SalaTeatroBean implements Serializable {
     
     public String cadastra(){
         teatro = new SalaTeatro();
-        return "form.xhtml?faces-redirect=true";
+        return "teatro/form.xhtml";
     }
     
     public String edita(Long id){

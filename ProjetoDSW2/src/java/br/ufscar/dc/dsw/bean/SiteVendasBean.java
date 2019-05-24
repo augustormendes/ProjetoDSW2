@@ -35,7 +35,7 @@ public class SiteVendasBean {
         u.setSenha(null);
         site.setUsuario(u);
         
-        return "CadastroSite.xhtml?faces-redirect =true";
+        return "site/form.xhtml";
     }
     
     public String edita(Long id){

@@ -10,7 +10,7 @@
         <!--
         <div form="center">
         <h:form>
-            <h:commandLink action="#{TeatroBean.cadastra()}">Cadastro Teatro</h:commandLink><br/>
+            <h:commandLink action="#{teatroBean.cadastra()}">Cadastro Teatro</h:commandLink><br/>
         </h:form>
         <h:form>
             <h:commandLink action="#{siteVendasBean.cadastra()}">Cadastro Site</h:commandLink><br/>
@@ -51,7 +51,7 @@
         <p:growl id ="messages"/>
         <p:menubar>
             <p:menuitem value ="Venda de Ingressos" style="color: #eeeef2 !important" ></p:menuitem>
-            <p:menuitem value ="Teatro">
+            <p:menuitem value ="Teatro" action="#{salaTeatroBean.cadastra()}" ajax="false">
             </p:menuitem>
             <p:menuitem value ="Site" action="#{siteVendasBean.cadastra()}" ajax="false">
             </p:menuitem>
