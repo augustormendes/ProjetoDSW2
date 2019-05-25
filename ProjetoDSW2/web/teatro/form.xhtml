@@ -15,22 +15,38 @@ and open the template in the editor.
     </h:head>
     <body>
         <h:form>
-            <h:panelGrid columns="2" cellpadding="5">
+            <h:panelGrid columns="3" cellpadding="5">
                 <p:outputLabel for="CNPJ" value ="CNPJ: "/>
-                <p:inputText id="CNPJ" value="#{teatroBean.teatro.cnpj}" maxlength="40">
-                    <f:validateRegex pattern="[a-zA-Z]+"/>
-                    </p:inputText>
+                <p:inputMask id="CNPJ" value="#{salaTeatroBean.teatro.CNPJ}" mask="99.999.999/9999-99" required="true"
+                             requiredMessage="Necessário"/>
+                <p:message for="CNPJ"/>
+                
                 <p:outputLabel for="nome" value ="nome: "/>
-                <p:inputText id="nome" value="#{teatroBean.teatro.nome}" maxlength="40">
-                    <f:validateRegex pattern="[a-zA-Z]+"/>
+                <p:inputText id="nome" value="#{salaTeatroBean.teatro.nome}" maxlength="40" required="true"
+                             requiredMessage="Necessário" validatorMessage="Caracter inválido">
+                    <f:validateRegex pattern="[A-zÀ-ú ]+"/>
                     </p:inputText>
+                <p:message for="nome"/>
+                
                 <p:outputLabel for ="cidade" value="cidade"/>
-                <p:inputText id="cidade" value="#{teatroBean.teatro.cidade}"/>
-                <h:outputText value="senha: " />
-                <p:password id="nonFeedback" value="#{teatroBean.site.usuario.senha}" />
-                <h:outputText value="email: " />
-                <p:inputText id="email" value="#{teatroBean.site.usuario.email}"/>
-                <p:commandButton value="Enviar" action="#{teatroBean.salva()}" ajax="false"/>
+                <p:inputText id="cidade" value="#{salaTeatroBean.teatro.cidade}" required="true" requiredMessage="Necessário"
+                             validatorMessage="Caracter inválido">
+                    <f:validateRegex pattern="[A-zÀ-ú ]+"/>
+                </p:inputText>
+                <p:message for="cidade"/>
+                
+                <h:outputLabel for="email" value="email:"/>
+                <p:inputText id="email" value="#{salaTeatroBean.teatro.usuario.email}" required="true" requiredMessage="Necessário"
+                             validatorMessage="Email não pode conter espacos">
+                 <f:validateRegex pattern="[^ ]+"/>
+                </p:inputText>
+                <p:message for="email"/>
+                
+                <p:outputLabel for="senha" value="senha: " />
+                <p:password id="senha" value="#{salaTeatroBean.teatro.usuario.senha}" required="true" requiredMessage="Necessário" />
+                <p:message for="senha"/>
+                
+                <p:commandButton value="Enviar" action="#{salaTeatroBean.salva()}" ajax="false"/>
             </h:panelGrid>
         </h:form>
         

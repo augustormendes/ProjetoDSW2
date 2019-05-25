@@ -15,21 +15,37 @@ and open the template in the editor.
     </h:head>
     <body>
         <h:form>
-            <h:panelGrid columns="2" cellpadding="5">
-                <p:outputLabel for="url" value ="URL: "/>
-                <p:inputText id="url" value="#{siteVendasBean.site.url}" maxlength="40">
-                    <f:validateRegex pattern="[a-zA-Z]+"/>
+            <h:panelGrid columns="3" cellpadding="5">
+                <p:outputLabel for="url" value ="URL"/>
+                <p:inputText id="url" value="#{siteVendasBean.site.url}" maxlength="40" required="true" requiredMessage="Necessário"
+                             validatorMessage="Url não pode conter espacos">
+                    <f:validateRegex pattern="[^ ]+"/>
                     </p:inputText>
-                <p:outputLabel for="nome" value ="nome: "/>
-                <p:inputText id="nome" value="#{siteVendasBean.site.nome}" maxlength="40">
-                    <f:validateRegex pattern="[a-zA-Z]+"/>
+                <p:message for="url"/>
+                
+                <p:outputLabel for="nome" value ="nome "/>
+                <p:inputText id="nome" value="#{siteVendasBean.site.nome}" maxlength="40" required="true" requiredMessage="Necessário"
+                             validatorMessage="Caracter inválido">
+                    <f:validateRegex pattern="[A-zÀ-ú ]+"/>
                     </p:inputText>
+                <p:message for="nome"/>
+                
                 <p:outputLabel for ="telefone" value="telefone"/>
-                <p:inputMask id="telefone" value="#{siteVendasBean.site.telefone}" mask="(99)9999-9999"/>
-                <h:outputText value="senha: " />
-                <p:password id="nonFeedback" value="#{siteVendasBean.site.usuario.senha}" />
-                <h:outputText value="email: " />
-                <p:inputText id="email" value="#{siteVendasBean.site.usuario.email}"/>
+                <p:inputMask id="telefone" value="#{siteVendasBean.site.telefone}" mask="(99)9999-9999" 
+                             required="true" requiredMessage="Necessário"/>
+                <p:message for="telefone"/>
+                
+                <p:outputLabel for="email" value ="email"/>
+                <p:inputText id="email" value="#{siteVendasBean.site.usuario.email}" maxlength="40" required="true" requiredMessage="Necessário"
+                             validatorMessage="email não pode conter espacos">
+                    <f:validateRegex pattern="[^ ]+"/>
+                    </p:inputText>
+                <p:message for="email"/>
+                
+                <p:outputLabel for="senha" value ="senha"/>
+                <p:password id="senha" value="#{siteVendasBean.site.usuario.senha}" required="true" requiredMessage="Necessário" />
+                <p:message for ="senha"/>
+                
                 <p:commandButton value="Enviar" action="#{siteVendasBean.salva()}" ajax="false"/>
             </h:panelGrid>
         </h:form>
