@@ -25,7 +25,7 @@ public class SalaTeatroBean implements Serializable {
     private SalaTeatro teatro;
     
     public String lista(){
-        return "teatro/index.xhtml";
+        return "/teatro/index.xhtml";
     }
     
     public String cadastra(){

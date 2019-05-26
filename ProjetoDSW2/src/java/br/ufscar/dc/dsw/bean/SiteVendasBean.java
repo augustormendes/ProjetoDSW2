@@ -25,7 +25,7 @@ public class SiteVendasBean implements Serializable {
     
     private SiteVendas site;
     public String lista(){
-        return "site/index.xhtml";
+        return "/site/index.xhtml";
     }
     
     public String cadastra(){
