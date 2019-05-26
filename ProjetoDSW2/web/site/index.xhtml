@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://xmlns.jcp.org/jsf/html"  
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">  
+    <h:head>  
+        <title>Venda de ingressos</title>
+    </h:head>  
+    <h:body>  
+        <h:form>
+            <br/>
+            <center>  
+                <h2><h:outputText value="Lista de sites"/></h2>  
+            <br/>
+            <h:dataTable value="#{siteVendasBean.siteVendas}" var="site">  
+                <h:column>  
+                    <f:facet name="header">Id</f:facet>  
+                    <h:outputText value="#{site.id}"/>  
+                </h:column>  
+                <h:column>  
+                    <f:facet name="header">Nome</f:facet>  
+                    <h:outputText value="#{site.nome}"/>  
+                </h:column>  
+                <h:column>  
+                    <f:facet name="header">Url</f:facet>  
+                    <h:outputText value="#{site.url}"/>  
+                </h:column>  
+                <h:column>  
+                    <f:facet name="header">Telefone</f:facet>  
+                    <h:outputText value="#{site.telefone}"/>  
+                </h:column>  
+                <h:column>  
+                    <f:facet name="header">Edição</f:facet>  
+                    <h:commandButton action = "#{siteVendasBean.edita(site.id)}" value="Editar">  
+                    </h:commandButton>  
+                </h:column>  
+                <h:column>  
+                    <f:facet name="header">Remoção</f:facet>  
+                    <h:commandButton action = "#{siteVendasBean.delete(site)}" value="Deletar" 
+                                     onclick="return confirm('Deseja realmente excluir ?');"
+                                     >  
+                    </h:commandButton>  
+                </h:column>
+            </h:dataTable>
+            <br/>
+            <center>
+                <h:commandButton action = "#{siteVendasBean.cadastra()}"   
+                                 value="Cadastrar"></h:commandButton>
+            </center>
+            <br/>
+            <center>
+                <h:commandButton action = "#{siteVendasBean.volta()}"   
+                                 value="Voltar"></h:commandButton>
+            </center>
+            </center>  
+        </h:form>  
+    </h:body>
+</html>
+

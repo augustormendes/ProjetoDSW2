@@ -28,7 +28,8 @@ public class PromocaoBean {
     
     public String cadastra(){
         promocao = new Promocao();
-        return "form.xhtml?faces-redirect=true";
+        
+        return "promocao/form.xhtml";
     }
     
     public String edita(Long id){
