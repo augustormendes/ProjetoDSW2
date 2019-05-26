@@ -3,6 +3,7 @@ package br.ufscar.dc.dsw.pojo;
 
 import java.io.Serializable;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,9 @@ public class SalaTeatro implements Serializable {
     private String CNPJ;
     private String nome;
     private String cidade;
-    @OneToOne @JoinColumn private Usuario usuario;
+    
+    @OneToOne (cascade=CascadeType.PERSIST) @JoinColumn
+    private Usuario usuario;
     @OneToMany (mappedBy = "sala") private Set<Promocao> promocoes;
 
     public Long getId() {
@@ -55,13 +58,6 @@ public class SalaTeatro implements Serializable {
         this.cidade = cidade;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
 
     public Set<Promocao> getPromocoes() {
         return promocoes;
@@ -74,5 +70,13 @@ public class SalaTeatro implements Serializable {
     
     public String toString(){
     return CNPJ;
+    }
+    
+      public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

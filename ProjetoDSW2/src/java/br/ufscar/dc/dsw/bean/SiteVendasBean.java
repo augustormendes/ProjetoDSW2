@@ -31,8 +31,6 @@ public class SiteVendasBean {
     public String cadastra(){
         site = new SiteVendas();
         Usuario u = new Usuario();
-        u.setEmail(null);
-        u.setSenha(null);
         site.setUsuario(u);
         
         return "site/form.xhtml";
@@ -51,13 +49,13 @@ public class SiteVendasBean {
         }else{
             dao.update(site);
         }
-        return "index.xhtml?faces-redirect=true";
+        return "/index.xhtml?faces-redirect=true";
     }
     
     public String delete(SiteVendas site){
         SiteVendasDAO dao = new SiteVendasDAO();
         dao.delete(site);
-        return "index.xhtml?faces-redirect=true";
+        return "/index.xhtml?faces-redirect=true";
     }
     
     public String volta(){

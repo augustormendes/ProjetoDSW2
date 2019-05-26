@@ -7,6 +7,7 @@ package br.ufscar.dc.dsw.bean;
 
 import br.ufscar.dc.dsw.dao.SalaTeatroDAO;
 import br.ufscar.dc.dsw.pojo.SalaTeatro;
+import br.ufscar.dc.dsw.pojo.Usuario;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
@@ -29,6 +30,9 @@ public class SalaTeatroBean implements Serializable {
     
     public String cadastra(){
         teatro = new SalaTeatro();
+        Usuario u = new Usuario();
+        teatro.setUsuario(u);
+        
         return "teatro/form.xhtml";
     }
     
@@ -45,7 +49,7 @@ public class SalaTeatroBean implements Serializable {
         }else{
             dao.update(teatro);
         }
-        return "index.xhtml";
+        return "/index.xhtml?faces-redirect=true";
     }
     
     public String delete(SalaTeatro teatro){
@@ -63,7 +67,7 @@ public class SalaTeatroBean implements Serializable {
         return dao.getAll();
     }
     
-    public SalaTeatro getSalaTeatro(){
+    public SalaTeatro getTeatro(){
         return teatro;
     }
 }
