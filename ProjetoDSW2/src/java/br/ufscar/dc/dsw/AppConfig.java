@@ -42,7 +42,8 @@ public class AppConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .and()
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/");
 
         http.csrf().disable();
     }
