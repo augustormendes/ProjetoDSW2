@@ -23,13 +23,13 @@ public class PromocaoBean {
     private Promocao promocao;
     
     public String lista(){
-        return "promocao/index.xhtml";
+        return "/promocao/index.xhtml";
     }
     
     public String cadastra(){
         promocao = new Promocao();
         
-        return "promocao/form.xhtml";
+        return "/promocao/form.xhtml";
     }
     
     public String edita(Long id){
@@ -45,13 +45,13 @@ public class PromocaoBean {
         }else{
             dao.update(promocao);
         }
-        return "index.xhtml?faces-redirect=true";
+        return "/index.xhtml?faces-redirect=true";
     }
     
     public String delete(Promocao promocao){
         PromocaoDAO dao = new PromocaoDAO();
         dao.delete(promocao);
-        return "index.xhtml?faces-redirect=true";
+        return "/index.xhtml?faces-redirect=true";
     }
     
     public String volta(){

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Nova Promocao</title>
+        <h:outputStylesheet name="/css/style.css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <body>
+        <ui:include src="/WEB-INF/base.xhtml"/>
+        <h:form>
+            <h:panelGrid columns="3" cellpadding="5">
+                <p:outputLabel for="horario" value="Data"/>
+            <p:calendar id="horario" timeZone="BRT" required="true" requiredMessage="Necessário" value="#{promocaoBean.promocao.horario}"/>
+            <p:message for="horario"/>
+            <p:outputLabel for="site" value="Site"/>
+            <p:selectOneMenu id="site" value="#{promocaoBean.promocao.site}" required="true" requiredMessage="Necessário">                          
+                             <f:selectItems value="#{siteVendasBean.siteVendas}"/>
+                             <f:converter converterId="SiteConverter"/>
+            </p:selectOneMenu>
+            <p:message for="site"/>
+            <p:outputLabel for="preco" value="Preco"/>
+            <p:inputNumber id="preco" minValue="0.00" value="#{promocaoBean.promocao.preco}" required="true" requiredMessage="Necessário"/>
+            <p:message for="preco"/>
+            <p:commandButton value="Enviar" action="#{promocaoBean.salva()}" ajax="false"/>
+            </h:panelGrid>
+        </h:form>  
+    </body>
+</html>

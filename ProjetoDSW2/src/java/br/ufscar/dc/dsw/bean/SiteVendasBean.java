@@ -32,7 +32,7 @@ public class SiteVendasBean implements Serializable {
         site = new SiteVendas();
         Usuario u = new Usuario();
         site.setUsuario(u);
-        
+      
         return "/site/form.xhtml";
     }
     

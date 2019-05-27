@@ -16,8 +16,18 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 @Column(unique = true)
+
 private String email;
 private String senha;
+private boolean ativo;
+
+    public boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
 
     public Long getId() {
         return id;
