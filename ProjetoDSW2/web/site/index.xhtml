@@ -7,35 +7,35 @@
       xmlns:sec="http://www.springframework.org/security/tags"
       xmlns:p="http://primefaces.org/ui">  
     <h:head>  
-        <title>Venda de ingressos</title>
+    <title>#{msg['page.title']}</title>
         <h:outputStylesheet name="/css/style.css"/>
     </h:head>  
     <h:body>  
         <ui:include src="/WEB-INF/base.xhtml"/>
-        <h2><h:outputText value="Lista de sites"/></h2>  
+        <h2><h:outputText value="#{msg['listtheater.title']}"/></h2>  
         <h:form>
             <p:dataTable value="#{siteVendasBean.siteVendas}" var="site">
                 <p:column headerText="Id">  
                     <h:outputText value="#{site.id}"/>  
                 </p:column>  
-                <p:column headerText="Nome">  
+                <p:column headerText="#{msg['name.label']}">  
                     <h:outputText value="#{site.nome}"/>  
                 </p:column>  
-                <p:column headerText="URL">  
+                <p:column headerText="#{msg['url.label']}">  
                     <h:outputText value="#{site.url}"/>  
                 </p:column>  
-                <p:column headerText="Telefone">  
+                <p:column headerText="#{msg['phone.label']}">  
                     <h:outputText value="#{site.telefone}"/>  
                 </p:column> 
 
                 <sec:authorize ifAllGranted="ROLE_ADMIN">
-                <p:column headerText="Edição">  
+                <p:column headerText="#{msg['edit.label']}">  
                     <h:commandButton action = "#{siteVendasBean.edita(site.id)}" value="Editar">  
                     </h:commandButton>  
                 </p:column>  
-                <p:column headerText="Remoção">  
+                <p:column headerText="#{msg['remove.label']}">  
                     <h:commandButton action = "#{siteVendasBean.delete(site.id)}" value="Deleta" 
-                    onclick="return confirm('Deseja realmente excluir ?');">  
+                                                                                  onclick="return confirm(#{msg['remove.confirm']});">  
                     </h:commandButton>  
                 </p:column>      
                 </sec:authorize>

@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"  
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"  
+      xmlns:sec="http://www.springframework.org/security/tags"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">  
     <h:head>  
@@ -26,6 +27,7 @@
                 <p:column headerText="Cidade">  
                     <h:outputText value="#{teatro.cidade}"/>  
                 </p:column>  
+                <sec:authorize ifAllGranted="ROLE_ADMIN">
                 <p:column headerText="Edição">
                     <h:commandButton action = "#{salaTeatroBean.edita(teatro.id)}" value="Editar">  
                     </h:commandButton>  
@@ -35,12 +37,15 @@
                                      onclick="return confirm('Deseja realmente excluir ?');">  
                     </h:commandButton>  
                 </p:column>
+                </sec:authorize>
             </p:dataTable>
             <br/>
+                <sec:authorize ifAllGranted="ROLE_ADMIN">
             <center>
                 <h:commandButton action = "#{salaTeatroBean.cadastra()}"   
                                  value="Cadastrar"></h:commandButton>
             </center>
+                </sec:authorize>
             <br/>
             <center>
                 <h:commandButton action = "#{salaTeatroBean.volta()}"   
