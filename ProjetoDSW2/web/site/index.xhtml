@@ -4,6 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"  
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:sec="http://www.springframework.org/security/tags"
       xmlns:p="http://primefaces.org/ui">  
     <h:head>  
         <title>Venda de ingressos</title>
@@ -25,7 +26,9 @@
                 </p:column>  
                 <p:column headerText="Telefone">  
                     <h:outputText value="#{site.telefone}"/>  
-                </p:column>  
+                </p:column> 
+
+                <sec:authorize ifAllGranted="ROLE_ADMIN">
                 <p:column headerText="Edição">  
                     <h:commandButton action = "#{siteVendasBean.edita(site.id)}" value="Editar">  
                     </h:commandButton>  
@@ -35,12 +38,16 @@
                     onclick="return confirm('Deseja realmente excluir ?');">  
                     </h:commandButton>  
                 </p:column>      
+                </sec:authorize>
+            
             </p:dataTable>
             <br/>
+            <sec:authorize ifAllGranted="ROLE_ADMIN">
             <center>
                 <h:commandButton action = "#{siteVendasBean.cadastra()}"   
                                  value="Cadastrar"></h:commandButton>
             </center>
+            </sec:authorize>
             <br/>
             <center>
                 <h:commandButton action = "#{siteVendasBean.volta()}"   
