@@ -11,41 +11,31 @@
     </h:head>  
     <h:body> 
         <ui:include src="/WEB-INF/base.xhtml"/>
+        <h2><h:outputText value="Lista de teatros"/></h2>  
         <h:form>
-            <br/>
-            <center>  
-                <h2><h:outputText value="Lista de teatros"/></h2>  
-            <br/>
-            <h:dataTable value="#{salaTeatroBean.salasTeatro}" var="teatro">  
-                <h:column>  
-                    <f:facet name="header">Id</f:facet>  
+            <p:dataTable value="#{salaTeatroBean.salasTeatro}" var="teatro">  
+                <p:column headerText="Id">  
                     <h:outputText value="#{teatro.id}"/>  
-                </h:column>  
-                <h:column>  
-                    <f:facet name="header">Nome</f:facet>  
+                </p:column>  
+                <p:column headerText="Nome">  
                     <h:outputText value="#{teatro.nome}"/>  
-                </h:column>  
-                <h:column>  
-                    <f:facet name="header">CNPJ</f:facet>  
+                </p:column>  
+                <p:column headerText="CNPJ">  
                     <h:outputText value="#{teatro.CNPJ}"/>  
-                </h:column>  
-                <h:column>  
-                    <f:facet name="header">Cidade</f:facet>  
+                </p:column>  
+                <p:column headerText="Cidade">  
                     <h:outputText value="#{teatro.cidade}"/>  
-                </h:column>  
-                <h:column>  
-                    <f:facet name="header">Edição</f:facet>  
+                </p:column>  
+                <p:column headerText="Edição">
                     <h:commandButton action = "#{salaTeatroBean.edita(teatro.id)}" value="Editar">  
                     </h:commandButton>  
-                </h:column>  
-                <h:column>  
-                    <f:facet name="header">Remoção</f:facet>  
+                </p:column>
+                <p:column headerText="Remoção">
                     <h:commandButton action = "#{SalaTeatroBean.delete(teatro)}" value="Deletar" 
-                                     onclick="return confirm('Deseja realmente excluir ?');"
-                                     >  
+                                     onclick="return confirm('Deseja realmente excluir ?');">  
                     </h:commandButton>  
-                </h:column>
-            </h:dataTable>
+                </p:column>
+            </p:dataTable>
             <br/>
             <center>
                 <h:commandButton action = "#{salaTeatroBean.cadastra()}"   
