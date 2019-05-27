@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
+    #{criaUsuarios.geraAdmin()}
     <h:head>
         <title>Venda de ingressos</title>
         <h:outputStylesheet name="/css/style.css"/>
@@ -16,9 +17,10 @@
             </p:menuitem>
             <p:menuitem value ="Site" action="#{siteVendasBean.lista()}" ajax="false">
             </p:menuitem>
-            <p:menuitem value ="Promoção" action="#{promocaoBean.cadastra()}" ajax="false">
+            <p:menuitem value ="Promoção" action="#{promocaoBean.cadastra()}" ajax="false" >
             </p:menuitem>
         </p:menubar>
+        <a href="site/index.xhtml"> Teste</a>
         </h:form>
         
 

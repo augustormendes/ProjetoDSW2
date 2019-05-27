@@ -25,7 +25,7 @@ public class SiteVendasBean {
     
     private SiteVendas site;
     public String lista(){
-        return "site/index.xhtml";
+        return "site/index.xhtml?faces-redirect=true";
     }
     
     public String cadastra(){
@@ -33,7 +33,7 @@ public class SiteVendasBean {
         Usuario u = new Usuario();
         site.setUsuario(u);
         
-        return "site/form.xhtml";
+        return "site/form.xhtml?faces-redirect=true";
     }
     
     public String edita(Long id){
