@@ -25,7 +25,7 @@ public class SalaTeatroBean implements Serializable {
     private SalaTeatro teatro;
     
     public String lista(){
-        return "teatro/index.xhtml";
+        return "/teatro/index.xhtml";
     }
     
     public String cadastra(){
@@ -33,7 +33,7 @@ public class SalaTeatroBean implements Serializable {
         Usuario u = new Usuario();
         teatro.setUsuario(u);
         
-        return "teatro/form.xhtml";
+        return "/teatro/form.xhtml";
     }
     
     public String edita(Long id){
@@ -49,7 +49,7 @@ public class SalaTeatroBean implements Serializable {
         }else{
             dao.update(teatro);
         }
-        return "/index.xhtml?faces-redirect=true";
+        return "/teatro/index.xhtml";
     }
     
     public String delete(SalaTeatro teatro){
@@ -59,7 +59,7 @@ public class SalaTeatroBean implements Serializable {
     }
     
     public String volta(){
-        return "index/.xhtml?faces-redirect=true";
+        return "/index.xhtml?faces-redirect=true";
     }
     
     public List<SalaTeatro> getSalasTeatro() throws SQLException {

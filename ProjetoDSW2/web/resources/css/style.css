@@ -1,0 +1,27 @@
+/*menu*/
+.ui-menu.ui-menubar {
+  background-color: #212529 !important;
+  background: #ffffff;
+  font-family: sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  font-size: 1rem;
+  margin-top: -9px;
+}
+
+.ui-menuitem {
+  padding-right: 30px !important;
+  color: aqua !important;
+
+}
+
+.ui-menubar .ui-menuitem-link {
+  color: #b7acac !important;
+}
+
+.ui-state-hover {
+  background-color: #212529 !important;
+  background-image: none !important;
+}
+

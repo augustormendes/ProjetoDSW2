@@ -21,19 +21,19 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-public class SiteVendasBean {
+public class SiteVendasBean implements Serializable {
     
     private SiteVendas site;
     public String lista(){
-        return "site/index.xhtml?faces-redirect=true";
+        return "/site/index.xhtml";
     }
     
     public String cadastra(){
         site = new SiteVendas();
         Usuario u = new Usuario();
         site.setUsuario(u);
-        
-        return "site/form.xhtml?faces-redirect=true";
+      
+        return "/site/form.xhtml";
     }
     
     public String edita(Long id){
@@ -49,7 +49,7 @@ public class SiteVendasBean {
         }else{
             dao.update(site);
         }
-        return "/index.xhtml?faces-redirect=true";
+        return "/site/index.xhtml";
     }
     
     public String delete(SiteVendas site){
