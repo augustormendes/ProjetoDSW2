@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -11,34 +11,49 @@
         <h:outputStylesheet name="/css/style.css"/>
     </h:head>
     <h:body>
-    <ui:include src="/WEB-INF/base.xhtml"/> 
+    <ui:include src="/WEB-INF/base.xhtml"/>
+    <center>
+            <h:graphicImage library="images" name="image.png"/>
+    </center>
+   
+    <!--
     <h2><h:outputText value="Lista de teatros"/></h2>  
         <h:form>
-            <p:dataTable value="#{salaTeatroBean.salasTeatro}" var="teatro">  
+            <p:dataTable value="{salaTeatroBean.salasTeatro}" var="teatro">  
                 <p:column headerText="Id">  
-                    <h:outputText value="#{teatro.id}"/>  
+                    <h:outputText value="{teatro.id}"/>  
                 </p:column>  
                 <p:column headerText="Nome">  
-                    <h:outputText value="#{teatro.nome}"/>  
+                    <h:outputText value="{teatro.nome}"/>  
                 </p:column>  
                 <p:column headerText="CNPJ">  
-                    <h:outputText value="#{teatro.CNPJ}"/>  
+                    <h:outputText value="{teatro.CNPJ}"/>  
                 </p:column>  
                 <p:column headerText="Cidade">  
-                    <h:outputText value="#{teatro.cidade}"/>  
+                    <h:outputText value="{teatro.cidade}"/>  
                 </p:column>  
-                <sec:authorize ifAllGranted="ROLE_ADMIN">
                 <p:column headerText="Edição">
-                    <h:commandButton action = "#{salaTeatroBean.edita(teatro.id)}" value="Editar">  
+                    <h:commandButton action = "{salaTeatroBean.edita(teatro.id)}" value="Editar">  
                     </h:commandButton>  
                 </p:column>
                 <p:column headerText="Remoção">
-                    <h:commandButton action = "#{SalaTeatroBean.delete(teatro)}" value="Deletar" 
+                    <h:commandButton action = "{SalaTeatroBean.delete(teatro)}" value="Deletar" 
                                      onclick="return confirm('Deseja realmente excluir ?');">  
                     </h:commandButton>  
                 </p:column>
-                </sec:authorize>
             </p:dataTable>
-                    </h:form>
+            <br/>
+            <center>
+                <h:commandButton action = "{salaTeatroBean.cadastra()}"   
+                                 value="Cadastrar"></h:commandButton>
+            </center>
+            <br/>
+            <center>
+                <h:commandButton action = "{salaTeatroBean.volta()}"   
+                                 value="Voltar"></h:commandButton>
+            </center>
+        </h:form>  
+    -->
+    
     </h:body>
 </html>
