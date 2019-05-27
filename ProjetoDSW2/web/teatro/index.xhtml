@@ -26,6 +26,12 @@
                 <p:column headerText="Cidade">  
                     <h:outputText value="#{teatro.cidade}"/>  
                 </p:column>  
+                <p:column headerText="Email">  
+                    <h:outputText value="#{teatro.usuario.email}"/>  
+                </p:column>  
+                <p:column headerText="Senha">  
+                    <h:outputText value="#{teatro.usuario.senha}"/>  
+                </p:column>
                 <p:column headerText="Edição">
                     <h:commandButton action = "#{salaTeatroBean.edita(teatro.id)}" value="Editar">  
                     </h:commandButton>  

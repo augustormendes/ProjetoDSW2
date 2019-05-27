@@ -26,6 +26,12 @@
                 <p:column headerText="Telefone">  
                     <h:outputText value="#{site.telefone}"/>  
                 </p:column>  
+                <p:column headerText="Email">  
+                    <h:outputText value="#{site.usuario.email}"/>  
+                </p:column> 
+                 <p:column headerText="Senha">  
+                    <h:outputText value="#{site.usuario.senha}"/>  
+                </p:column> 
                 <p:column headerText="Edição">  
                     <h:commandButton action = "#{siteVendasBean.edita(site.id)}" value="Editar">  
                     </h:commandButton>  
