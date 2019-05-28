@@ -8,7 +8,7 @@
         <p:growl id="messages"/>
         <p:menubar>
             <p:menuitem value ="#{msg['page.title']}" url="/ProjetoDSW2/" style="color: #eeeef2 !important"/>
-            <p:menuitem value ="#{msg['theather.title']}" action="#{salaTeatroBean.lista()}" ajax="false"/>
+            <p:menuitem value ="#{msg['theaters.title']}" action="#{salaTeatroBean.lista()}" ajax="false"/>
             <p:menuitem value ="Site" action="#{siteVendasBean.lista()}" ajax="false"/>
             <sec:authorize ifAllGranted="ROLE_SITE">
               <p:menuitem value ="Promoção" action="#{promocaoBean.cadastra()}" ajax="false"/>
