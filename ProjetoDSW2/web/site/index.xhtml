@@ -35,7 +35,7 @@
                 </p:column>  
                 <p:column headerText="#{msg['remove.label']}">  
                     <h:commandButton action = "#{siteVendasBean.delete(site.id)}" value="Deleta" 
-                                                                                  onclick="return confirm(#{msg['remove.confirm']});">  
+                                                                                  onclick="return confirm('#{msg['remove.confirm']}');">  
                     </h:commandButton>  
                 </p:column>      
                 </sec:authorize>
