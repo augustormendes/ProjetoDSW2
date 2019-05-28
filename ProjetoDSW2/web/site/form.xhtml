@@ -9,7 +9,8 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Cadastro de Site</title>
         <h:outputStylesheet name="/css/style.css"/>
@@ -19,35 +20,42 @@ and open the template in the editor.
         <ui:include src="/WEB-INF/base.xhtml"/>
         <h:form>
             <h:panelGrid columns="3" cellpadding="5">
+                 <c:choose>
+                     <c:when test="#{siteVendasBean.site.url == null}">
                 <p:outputLabel for="url" value ="URL"/>
                 <p:inputText id="url" value="#{siteVendasBean.site.url}" maxlength="40" required="true" requiredMessage="Necessário"
                              validatorMessage="Url não pode conter espacos">
                     <f:validateRegex pattern="[^ ]+"/>
                     </p:inputText>
                 <p:message for="url"/>
+                     </c:when>
+                     <c:otherwise>
+                         <h:inputHidden value="#{siteVendasBean.site.url}" />
+                     </c:otherwise>
+                 </c:choose>
                 
-                <p:outputLabel for="nome" value ="nome "/>
+                <p:outputLabel for="nome" value ="Nome "/>
                 <p:inputText id="nome" value="#{siteVendasBean.site.nome}" maxlength="40" required="true" requiredMessage="Necessário"
                              validatorMessage="Caracter inválido">
                     <f:validateRegex pattern="[A-zÀ-ú ]+"/>
                     </p:inputText>
                 <p:message for="nome"/>
                 
-                <p:outputLabel for ="telefone" value="telefone"/>
+                <p:outputLabel for ="telefone" value="Telefone"/>
                 <p:inputMask id="telefone" value="#{siteVendasBean.site.telefone}" mask="(99)9999-9999" 
                              required="true" requiredMessage="Necessário"/>
                 <p:message for="telefone"/>
                 
-                <p:outputLabel for="email" value ="email"/>
+                <p:outputLabel for="email" value ="Email"/>
                 <p:inputText id="email" value="#{siteVendasBean.site.usuario.email}" maxlength="40" required="true" requiredMessage="Necessário"
-                             validatorMessage="email não pode conter espacos">
-                    <f:validateRegex pattern="[^ ]+"/>
+                             validatorMessage="Formato incorreto. Exemplo: ex@gmail.com">
+                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
                     </p:inputText>
                 <p:message for="email"/>
-                
-                <p:outputLabel for="senha" value ="senha"/>
+           
+                <p:outputLabel for="senha" value ="Senha"/>
                 <p:password id="senha" value="#{siteVendasBean.site.usuario.senha}" required="true" requiredMessage="Necessário" />
-                <p:message for ="senha"/>
+                <p:message for ="senha"/>   
                 
                 <p:commandButton value="Enviar" action="#{siteVendasBean.salva()}" ajax="false"/>
                 

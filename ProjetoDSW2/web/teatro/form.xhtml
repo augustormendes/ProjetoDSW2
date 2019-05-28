@@ -9,7 +9,8 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Cadastro de Teatro</title>
         <h:outputStylesheet name="/css/style.css"/>
@@ -19,33 +20,40 @@ and open the template in the editor.
         <ui:include src="/WEB-INF/base.xhtml"/>
         <h:form>
             <h:panelGrid columns="3" cellpadding="5">
-                <p:outputLabel for="CNPJ" value ="CNPJ: "/>
+                <c:choose>
+                    <c:when test="#{salaTeatroBean.teatro.usuario.senha == null}">
+                <p:outputLabel for="CNPJ" value ="CNPJ:"/>
                 <p:inputMask id="CNPJ" value="#{salaTeatroBean.teatro.CNPJ}" mask="99.999.999/9999-99" required="true"
                              requiredMessage="Necessário"/>
                 <p:message for="CNPJ"/>
+                    </c:when>
+                    <c:otherwise>
+                        <h:inputHidden value ="#{salaTeatroBean.teatro.CNPJ}"/>
+                    </c:otherwise>
+                </c:choose>
                 
-                <p:outputLabel for="nome" value ="nome: "/>
+                <p:outputLabel for="nome" value ="Nome:"/>
                 <p:inputText id="nome" value="#{salaTeatroBean.teatro.nome}" maxlength="40" required="true"
                              requiredMessage="Necessário" validatorMessage="Caracter inválido">
                     <f:validateRegex pattern="[A-zÀ-ú ]+"/>
                     </p:inputText>
                 <p:message for="nome"/>
                 
-                <p:outputLabel for ="cidade" value="cidade"/>
+                <p:outputLabel for ="cidade" value="Cidade:"/>
                 <p:inputText id="cidade" value="#{salaTeatroBean.teatro.cidade}" required="true" requiredMessage="Necessário"
                              validatorMessage="Caracter inválido">
                     <f:validateRegex pattern="[A-zÀ-ú ]+"/>
                 </p:inputText>
                 <p:message for="cidade"/>
                 
-                <h:outputLabel for="email" value="email:"/>
+                <h:outputLabel for="email" value="Email:"/>
                 <p:inputText id="email" value="#{salaTeatroBean.teatro.usuario.email}" required="true" requiredMessage="Necessário"
-                             validatorMessage="Email não pode conter espacos">
-                 <f:validateRegex pattern="[^ ]+"/>
+                             validatorMessage="Formato incorreto. Exemplo: ex@gmail.com">
+                 <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
                 </p:inputText>
                 <p:message for="email"/>
                 
-                <p:outputLabel for="senha" value="senha: " />
+                <p:outputLabel for="senha" value="Senha:" />
                 <p:password id="senha" value="#{salaTeatroBean.teatro.usuario.senha}" required="true" requiredMessage="Necessário" />
                 <p:message for="senha"/>
                 

@@ -29,6 +29,12 @@
                 </p:column> 
 
                 <sec:authorize ifAllGranted="ROLE_ADMIN">
+                <p:column headerText="Email">  
+                    <h:outputText value="#{site.usuario.email}"/>  
+                </p:column> 
+                 <p:column headerText="Senha">  
+                    <h:outputText value="#{site.usuario.senha}"/>  
+                </p:column>
                 <p:column headerText="#{msg['edit.label']}">  
                     <h:commandButton action = "#{siteVendasBean.edita(site.id)}" value="Editar">  
                     </h:commandButton>  
