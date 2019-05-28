@@ -52,10 +52,11 @@ public class SiteVendasBean implements Serializable {
         return "/site/index.xhtml";
     }
     
-    public String delete(SiteVendas site){
+    public String delete(Long id){
         SiteVendasDAO dao = new SiteVendasDAO();
+        site = dao.get(id);
         dao.delete(site);
-        return "/index.xhtml?faces-redirect=true";
+        return "index.xhtml?faces-redirect=true";
     }
     
     public String volta(){

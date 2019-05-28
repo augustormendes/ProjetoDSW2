@@ -7,53 +7,15 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
       #{criaUsuarios.geraAdmin()}
     <h:head>
-        <title>Venda de ingressos</title>
+        <title>#{msg['page.title']}</title>
         <h:outputStylesheet name="/css/style.css"/>
     </h:head>
     <h:body>
-    <ui:include src="/WEB-INF/base.xhtml"/>
-    <center>
+
+      <ui:include src="/WEB-INF/base.xhtml"/>
+      <center>
             <h:graphicImage library="images" name="image.png"/>
-    </center>
-   
-    <!--
-    <h2><h:outputText value="Lista de teatros"/></h2>  
-        <h:form>
-            <p:dataTable value="{salaTeatroBean.salasTeatro}" var="teatro">  
-                <p:column headerText="Id">  
-                    <h:outputText value="{teatro.id}"/>  
-                </p:column>  
-                <p:column headerText="Nome">  
-                    <h:outputText value="{teatro.nome}"/>  
-                </p:column>  
-                <p:column headerText="CNPJ">  
-                    <h:outputText value="{teatro.CNPJ}"/>  
-                </p:column>  
-                <p:column headerText="Cidade">  
-                    <h:outputText value="{teatro.cidade}"/>  
-                </p:column>  
-                <p:column headerText="Edição">
-                    <h:commandButton action = "{salaTeatroBean.edita(teatro.id)}" value="Editar">  
-                    </h:commandButton>  
-                </p:column>
-                <p:column headerText="Remoção">
-                    <h:commandButton action = "{SalaTeatroBean.delete(teatro)}" value="Deletar" 
-                                     onclick="return confirm('Deseja realmente excluir ?');">  
-                    </h:commandButton>  
-                </p:column>
-            </p:dataTable>
-            <br/>
-            <center>
-                <h:commandButton action = "{salaTeatroBean.cadastra()}"   
-                                 value="Cadastrar"></h:commandButton>
-            </center>
-            <br/>
-            <center>
-                <h:commandButton action = "{salaTeatroBean.volta()}"   
-                                 value="Voltar"></h:commandButton>
-            </center>
-        </h:form>  
-    -->
-    
+      </center>
+  
     </h:body>
 </html>
