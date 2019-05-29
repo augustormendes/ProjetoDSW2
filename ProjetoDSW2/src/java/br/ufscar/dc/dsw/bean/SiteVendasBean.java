@@ -6,6 +6,7 @@
 package br.ufscar.dc.dsw.bean;
 
 import br.ufscar.dc.dsw.dao.SiteVendasDAO;
+import br.ufscar.dc.dsw.pojo.Papel;
 import br.ufscar.dc.dsw.pojo.SiteVendas;
 import br.ufscar.dc.dsw.pojo.Usuario;
 import java.io.Serializable;
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 /**
@@ -25,7 +27,7 @@ public class SiteVendasBean implements Serializable {
     
     private SiteVendas site;
     public String lista(){
-        return "/site/index.xhtml";
+        return "/site/index.xhtml?faces-redirect=true";
     }
     
     public String cadastra(){
@@ -33,7 +35,7 @@ public class SiteVendasBean implements Serializable {
         Usuario u = new Usuario();
         site.setUsuario(u);
       
-        return "/site/form.xhtml";
+        return "/site/form.xhtml?faces-redirect=true";
     }
     
     public String edita(Long id){
@@ -44,12 +46,19 @@ public class SiteVendasBean implements Serializable {
     
     public String salva(){
         SiteVendasDAO dao = new SiteVendasDAO();
+         Papel papel = new Papel();
+        papel.setEmail(site.getUsuario().getEmail());
+        papel.setNome("ROLE_SITE");
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        site.getUsuario().setSenha(encoder.encode(site.getUsuario().getSenha()));
+        site.getUsuario().setPapel(papel);
+        site.getUsuario().setAtivo(true);
         if (site.getId() == null){
             dao.save(site);
         }else{
             dao.update(site);
         }
-        return "/site/index.xhtml";
+        return "/site/index.xhtml?faces-redirect=true";
     }
     
     public String delete(SiteVendas site){
