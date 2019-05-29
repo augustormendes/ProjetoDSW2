@@ -32,7 +32,7 @@ public class Papel implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    @OneToOne(cascade=CascadeType.PERSIST) @JoinColumn private Usuario usuario;
+    
 
     public Long getId() {
         return id;
@@ -42,13 +42,6 @@ public class Papel implements Serializable {
         this.id = id;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
     
     
 }

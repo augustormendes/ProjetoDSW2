@@ -77,6 +77,15 @@ public class SalaTeatroBean implements Serializable {
         return dao.getAll();
     }
     
+    public List<SalaTeatro> getFromCity(String city) throws SQLException {
+        SalaTeatroDAO dao = new SalaTeatroDAO();
+        return dao.getByCity(city);
+    }
+    
+    public String fromCity(){
+        return"/teatro/indexForCity.xhtml";
+    }
+    
     public SalaTeatro getTeatro(){
         return teatro;
     }

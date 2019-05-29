@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <!DOCTYPE html>
+        <center>
+            <h1> ¯\_(ツ)_/¯</h1>
+            <h1>Desculpe! Parece que algo deu errado :(</h1>
+            <h3>Erro</h3>
+            <c:choose> 
+                <c:when test= "#{response.getStatus() == 500}"> 
+            <p>exception.getMessage()<br/> </p>
+                </c:when>
+                <c:otherwise>
+            <p>response.getStatus()<br/></p>
+                </c:otherwise>
+                </c:choose>
+        </center>	
+</html>
+

@@ -1,6 +1,8 @@
 package br.ufscar.dc.dsw.dao;
 
 import br.ufscar.dc.dsw.pojo.Promocao;
+import br.ufscar.dc.dsw.pojo.SalaTeatro;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -15,6 +17,17 @@ public class PromocaoDAO extends GenericDAO<Promocao> {
         em.close();
         return promocao;
     }
+    
+   public SalaTeatro getSalaFromEmail(String email){
+       EntityManager em = this.getEntityManager();
+       String sql = "SELECT teatro FROM SalaTeatro teatro "
+                + "WHERE teatro.usuario.email = :email";
+       TypedQuery<SalaTeatro> q = em.createQuery(sql, SalaTeatro.class);
+       List<SalaTeatro> teatro = new ArrayList<SalaTeatro>();
+       q.setParameter("email", email);
+       teatro = q.getResultList();
+       return q.getSingleResult(); 
+   }
 
     @Override
     public List<Promocao> getAll() {

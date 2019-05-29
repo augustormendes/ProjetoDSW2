@@ -22,7 +22,7 @@ public class SiteVendas implements Serializable{
    
     private String nome;
     private String telefone;
-    @OneToOne (cascade=CascadeType.PERSIST) @JoinColumn
+    @OneToOne (cascade=CascadeType.PERSIST) @JoinColumn(name = "USUARIO_ID")
     private Usuario usuario;
     
     public Long getId() {
@@ -58,11 +58,23 @@ public class SiteVendas implements Serializable{
     public String toString(){
     return url;
     }
+    
      public Usuario getUsuario() {
         return usuario;
     }
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+    
+    public boolean equals(Object obj) {
+        if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (!(obj instanceof SiteVendas))
+		return false;
+	SiteVendas other = (SiteVendas) obj;
+	return other.nome.equals(this.nome);
     }
 }

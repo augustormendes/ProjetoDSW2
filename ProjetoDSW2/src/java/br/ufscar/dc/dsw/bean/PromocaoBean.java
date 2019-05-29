@@ -27,7 +27,7 @@ public class PromocaoBean {
     private Promocao promocao;
     
     public String lista(){
-        return "promocao/index.xhtml";
+        return "/promocao/index.xhtml";
     }
     
     public String cadastra(){

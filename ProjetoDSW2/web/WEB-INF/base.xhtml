@@ -1,17 +1,37 @@
     <ui:composition xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:sec="http://www.springframework.org/security/tags"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
         <h:form>
         <p:growl id="messages"/>
         <p:menubar>
-            <p:menuitem value ="Venda de Ingressos" style="color: #eeeef2 !important" ></p:menuitem>
-            <p:menuitem value ="Teatro" action="#{salaTeatroBean.lista()}" ajax="false">
-            </p:menuitem>
-            <p:menuitem value ="Site" action="#{siteVendasBean.lista()}" ajax="false">
-            </p:menuitem>
-            <p:menuitem value ="Promoção" action="#{promocaoBean.cadastra()}" ajax="false">
-            </p:menuitem>
+            <p:menuitem value ="#{msg['page.title']}" url="/ProjetoDSW2/" style="color: #eeeef2 !important"/>
+            <p:menuitem value ="#{msg['theaters.title']}" action="#{salaTeatroBean.lista()}" ajax="false"/>
+            <p:menuitem value ="Site" action="#{siteVendasBean.lista()}" ajax="false"/>
+            
+            <sec:authorize ifAllGranted="ROLE_TEATRO">
+              <p:menuitem value ="Promoção" action="#{promocaoBean.cadastra()}" ajax="false"/>
+            </sec:authorize>
+            <sec:authorize ifNotGranted="ROLE_ADMIN, ROLE_SITE, ROLE_TEATRO">
+              <p:menuitem value ="Login" url="/ProjetoDSW2/login"/>
+            </sec:authorize>
+            <sec:authorize ifAnyGranted="ROLE_ADMIN, ROLE_SITE, ROLE_TEATRO">
+              <p:menuitem value ="Logout" url="/ProjetoDSW2/logout"/>
+            </sec:authorize>
+            
+            <f:facet name="options">
+              <sec:authorize ifAllGranted="ROLE_ADMIN">
+               <h:outputText value="#{msg['role.admin.message']}"/>
+              </sec:authorize>
+              <sec:authorize ifAllGranted="ROLE_SITE">
+               <h:outputText value="#{msg['role.site.message']}"/>
+              </sec:authorize>
+              <sec:authorize ifAllGranted="ROLE_TEATRO">
+               <h:outputText value="#{msg['role.theater.message']}"/>
+              </sec:authorize>
+            </f:facet>
         </p:menubar>
         </h:form>
     </ui:composition>

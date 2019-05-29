@@ -10,16 +10,16 @@ import javax.faces.convert.FacesConverter;
 @FacesConverter("SiteConverter")
 public class SiteConverter implements Converter{
    
-    
+   @Override
+    public Object getAsObject(FacesContext fc, UIComponent uic, String string) {
+        Long id = Long.parseLong(string);
+        SiteVendasDAO dao = new SiteVendasDAO();
+        return dao.get(id);
+    }
+
     @Override
-    public Object getAsObject(FacesContext fc, UIComponent uic, String string){
-         Long id = Long.parseLong(string);
-         SiteVendasDAO dao = new SiteVendasDAO();
-         return dao.get(id);
-   }
-    @Override
-   public String getAsString(FacesContext fc, UIComponent uic, Object O){
-       SiteVendas site = (SiteVendas) O;
-       return site.getId().toString();
-   }
+    public String getAsString(FacesContext fc, UIComponent uic, Object o) {
+        SiteVendas site = (SiteVendas) o;
+        return site.getId().toString();
+    }
 }

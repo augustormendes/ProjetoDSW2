@@ -23,11 +23,8 @@ public class Promocao implements Serializable{
     private float preco;
     @Temporal(TemporalType.TIMESTAMP)private Date horario;
     
-    @OneToOne (cascade=CascadeType.PERSIST) @JoinColumn
-    private SalaTeatro teatro;
 
 
-    
     @ManyToOne @JoinColumn private SiteVendas site;
     @ManyToOne @JoinColumn private SalaTeatro sala;
 

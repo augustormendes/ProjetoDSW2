@@ -22,6 +22,7 @@ public class SalaTeatro implements Serializable {
     private String nome;
     private String cidade;
     
+    
     @OneToOne (cascade=CascadeType.PERSIST) @JoinColumn
     private Usuario usuario;
     @OneToMany (mappedBy = "sala") private Set<Promocao> promocoes;
@@ -78,5 +79,5 @@ public class SalaTeatro implements Serializable {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    }
+    } 
 }
