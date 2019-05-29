@@ -14,6 +14,9 @@
             <sec:authorize ifAllGranted="ROLE_TEATRO">
               <p:menuitem value ="Promoção" action="#{promocaoBean.cadastra()}" ajax="false"/>
             </sec:authorize>
+            <sec:authorize ifAllGranted="ROLE_SITE">
+                <p:menuitem value ="Promoção" action="#{siteVendasBean.listaPromocoes()}" ajax="false"/>
+            </sec:authorize>
             <sec:authorize ifNotGranted="ROLE_ADMIN, ROLE_SITE, ROLE_TEATRO">
               <p:menuitem value ="Login" url="/ProjetoDSW2/login"/>
             </sec:authorize>

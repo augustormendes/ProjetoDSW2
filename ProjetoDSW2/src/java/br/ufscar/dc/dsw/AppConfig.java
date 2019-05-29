@@ -41,6 +41,7 @@
                 .antMatchers("/faces/site/form.xhtml").hasRole("ADMIN")
                 .antMatchers("/faces/teatro/form.xhtml").hasRole("ADMIN")
                 .antMatchers("/faces/promocao/form.xhtml").hasRole("TEATRO")
+                .antMatchers("/faces/site/indexPromocao.xhtml").hasRole("SITE")
                 .and()
                 .formLogin()
                 .and()

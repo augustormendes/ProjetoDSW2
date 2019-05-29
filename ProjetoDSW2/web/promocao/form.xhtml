@@ -32,6 +32,11 @@ and open the template in the editor.
             <p:outputLabel for="preco" value="Preco"/>
             <p:inputNumber id="preco" minValue="0.00" value="#{promocaoBean.promocao.preco}" required="true" requiredMessage="Necessário"/>
             <p:message for="preco"/>
+            
+            <p:outputLabel for="nome" value="Nome"/>
+            <p:inputText id="nome" value="#{promocaoBean.promocao.nome}" required="true" requiredMessage="Necessário"/>
+            <p:message for="nome"/>
+            
             <p:commandButton value="Enviar" action="#{promocaoBean.salva()}" ajax="false"/>
             </h:panelGrid>
         </h:form>  

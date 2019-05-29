@@ -21,6 +21,7 @@ public class Promocao implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;    
     private float preco;
+    private String nome;
     @Temporal(TemporalType.TIMESTAMP)private Date horario;
     
 
@@ -68,8 +69,14 @@ public class Promocao implements Serializable{
         this.sala = sala;
     }
 
-    public void setUsuario(Usuario u) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getNome() {
+        return nome;
     }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    
  
 }
