@@ -22,10 +22,12 @@
         public void configure(AuthenticationManagerBuilder builder)
                 throws Exception {
 
+
             String userSql = "SELECT email, senha, ativo FROM Usuario "
                     + " WHERE email = ?";
             String roleSql = "select email, nome "
                             + "from Papel where email = ?";
+
 
             builder.jdbcAuthentication().dataSource(dataSource)
                     .usersByUsernameQuery(userSql)
@@ -35,18 +37,18 @@
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
-            http.authorizeRequests()
-                    .antMatchers("/faces/site/form.xhtml").hasRole("ADMIN")
-                    .antMatchers("/user/**").hasRole("USER")
-                    .and()
-                    .formLogin()
-                    .and()
-                    .logout()
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                    .logoutSuccessUrl("/");
+        http.authorizeRequests()
+                .antMatchers("/faces/site/form.xhtml").hasRole("ADMIN")
+                .antMatchers("/faces/teatro/form.xhtml").hasRole("ADMIN")
+                .antMatchers("/faces/promocao/form.xhtml").hasRole("TEATRO")
+                .and()
+                .formLogin()
+                .and()
+                .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 
-            http.csrf().disable();
-        }
+        http.csrf().disable();
+    }
 
         public static DataSource getDataSource() throws ClassNotFoundException {
 

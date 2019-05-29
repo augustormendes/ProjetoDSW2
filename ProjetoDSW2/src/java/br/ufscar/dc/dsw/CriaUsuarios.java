@@ -27,11 +27,12 @@ public class CriaUsuarios {
             u.setAtivo(true);
             u.setEmail("admin@admin");
             u.setSenha(encoder.encode("admin"));
-            papel.setUsuario(u);
             papel.setEmail("admin@admin");
             papel.setNome("ROLE_ADMIN");
-            PapelDAO dao = new PapelDAO();
-            dao.save(papel);
+            u.setPapel(papel);
+            
+            UsuarioDAO dao = new UsuarioDAO();
+            dao.save(u);
             criou = true;
         } catch (Exception e) {
             e.printStackTrace();
