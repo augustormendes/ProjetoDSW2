@@ -18,6 +18,7 @@ and open the template in the editor.
     </h:head>
     <body>
         <ui:include src="/WEB-INF/base.xhtml"/>
+        <div class="container">
         <h:form>
             <h:panelGrid columns="3" cellpadding="5">
                 <c:choose>
@@ -60,6 +61,7 @@ and open the template in the editor.
                 <p:commandButton value="Enviar" action="#{salaTeatroBean.salva()}" ajax="false"/>
             </h:panelGrid>
         </h:form>
+        </div>
         
     </body>
 </html>

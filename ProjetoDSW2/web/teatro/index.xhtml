@@ -6,14 +6,14 @@
       xmlns:sec="http://www.springframework.org/security/tags"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
->  
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"> 
     <h:head>  
         <title>Venda de ingressos</title>
         <h:outputStylesheet name="/css/style.css"/>
     </h:head>  
     <h:body> 
         <ui:include src="/WEB-INF/base.xhtml"/>
+        <div class="container">
                 <h2><h:outputText value="Lista de teatros"/></h2> 
           <h:form>
                 <h:panelGrid columns="2" width="100%" style="text-align:right">
@@ -76,5 +76,6 @@
                                  value="Voltar"></h:commandButton>
             </center>
         </h:form>  
+        </div>
     </h:body>
 </html>
