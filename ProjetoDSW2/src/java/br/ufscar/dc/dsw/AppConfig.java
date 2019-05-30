@@ -46,7 +46,9 @@
                 .formLogin()
                 .and()
                 .logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/"); //Tentando ir para index depois de logout
+
 
         http.csrf().disable();
     }

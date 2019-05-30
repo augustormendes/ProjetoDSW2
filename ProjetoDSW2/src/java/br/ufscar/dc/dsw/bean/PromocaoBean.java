@@ -69,6 +69,14 @@ public class PromocaoBean {
         PromocaoDAO dao = new PromocaoDAO();
         return dao.getAll();
     }
+
+    public List<Promocao> getSalesOfTheater() {
+        PromocaoDAO dao = new PromocaoDAO();
+        User u = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        SalaTeatro t = dao.getSalaFromEmail(u.getUsername());
+        String cnpj = t.getCNPJ();
+        return dao.getByCNPJ(cnpj);
+    }
     
     public Promocao getPromocao(){
         return promocao;

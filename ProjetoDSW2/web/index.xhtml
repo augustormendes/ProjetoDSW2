@@ -4,7 +4,9 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:sec="http://www.springframework.org/security/tags"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"> 
       #{criaUsuarios.geraAdmin()}
     <h:head>
         <title>#{msg['page.title']}</title>
@@ -13,9 +15,77 @@
     <h:body>
 
       <ui:include src="/WEB-INF/base.xhtml"/>
-      <center>
-            <h:graphicImage library="images" name="image.png"/>
-      </center>
-  
+      <!--<center>-->
+            <!--<h:graphicImage library="images" name="image.png"/>-->
+      <!--</center>-->
+         <div class="container">
+                <h2><h:outputText value="#{msg['welcome.index']}"/></h2> 
+                <h:outputText value="#{msg['message.index']}"/>
+          <h:form>
+                <h:panelGrid columns="2" width="100%" style="text-align:right">
+                    <p:inputText id="cidade" value="#{salaTeatroBean.teatro.cidade}" 
+                                             a:placeholder="#{msg['search.city.label']}"
+                                             maxlength="40" required="false" 
+                                             requiredMessage="#{msg['verification.required']}" 
+                                             validatorMessage="#{msg['verification.city.message']}">  
+                    <f:validateRegex pattern="[A-zÀ-ú ]+"/>
+            </p:inputText>
+           </h:panelGrid>
+             <h:panelGrid width="100%" style="text-align: right">
+            <h:commandButton 
+                action = "#{salaTeatroBean.fromCity()}" value="Buscar">  <!-- criar outra datatable -->
+            </h:commandButton>  
+            </h:panelGrid>
+              
+          </h:form>
+                <h:form>
+            <p:dataTable value="#{salaTeatroBean.salasTeatro}" var="teatro">  
+                <p:column headerText="Id">  
+                    <h:outputText value="#{teatro.id}"/>  
+                </p:column>  
+                <p:column headerText="Nome">  
+                    <h:outputText value="#{teatro.nome}"/>  
+                </p:column>  
+                <p:column headerText="CNPJ">  
+                    <h:outputText value="#{teatro.CNPJ}"/>  
+                </p:column>  
+                <p:column headerText="Cidade">  
+                    <h:outputText value="#{teatro.cidade}"/>  
+                </p:column>  
+
+              <sec:authorize ifAllGranted="ROLE_ADMIN">
+                <p:column headerText="Email">  
+                    <h:outputText value="#{teatro.usuario.email}"/>  
+                </p:column>  
+                <p:column headerText="Senha">  
+                    <h:outputText value="#{teatro.usuario.senha}"/>  
+                </p:column>
+                <p:column headerText="Edição">
+                    <h:commandButton action = "#{salaTeatroBean.edita(teatro.id)}" value="Editar">  
+                    </h:commandButton>  
+                </p:column>
+                <p:column headerText="Remoção">
+                    <h:commandButton action = "#{SalaTeatroBean.delete(teatro)}" value="Deletar" 
+                                     onclick="return confirm('Deseja realmente excluir ?');">  
+                    </h:commandButton>  
+                </p:column>
+                </sec:authorize>
+            
+                  </p:dataTable>
+            <br/>
+                <sec:authorize ifAllGranted="ROLE_ADMIN">
+            <center>
+                <h:commandButton action = "#{salaTeatroBean.cadastra()}"   
+                                 value="Cadastrar"></h:commandButton>
+            </center>
+                </sec:authorize>
+            <br/>
+            <center>
+                <h:commandButton action = "#{salaTeatroBean.volta()}"   
+                                 value="Voltar"></h:commandButton>
+            </center>
+        </h:form>  
+        </div>
+ 
     </h:body>
 </html>
