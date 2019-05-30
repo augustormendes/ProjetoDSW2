@@ -4,6 +4,7 @@ package br.ufscar.dc.dsw.pojo;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +19,7 @@ public class SalaTeatro implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
    
+    @Column(unique = true)
     private String CNPJ;
     private String nome;
     private String cidade;

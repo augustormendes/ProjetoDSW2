@@ -11,6 +11,7 @@ import br.ufscar.dc.dsw.pojo.SalaTeatro;
 import br.ufscar.dc.dsw.pojo.Usuario;
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -72,5 +73,8 @@ public class PromocaoBean {
     
     public Promocao getPromocao(){
         return promocao;
+    }
+    public Date getCurrentDate(){
+        return new Date();
     }
 }
