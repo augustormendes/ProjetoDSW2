@@ -70,6 +70,19 @@ public class PromocaoBean {
         return dao.getAll();
     }
     
+     public List<Promocao> getFromTheater(String cnpj) throws SQLException {
+        PromocaoDAO dao = new PromocaoDAO();
+        return dao.getByCNPJ(cnpj);
+    }
+    
+    public String fromTheater(){
+        return"/promocao/indexFromTheater.xhtml";
+    }
+    
+    public String formAcessivel(){
+         return"/promocao/formAcessivel.xhtml";
+    }
+    
     public Promocao getPromocao(){
         return promocao;
     }

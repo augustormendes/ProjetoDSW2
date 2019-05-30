@@ -9,6 +9,7 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Nova Promocao</title>
@@ -18,23 +19,41 @@ and open the template in the editor.
     <body>
         <ui:include src="/WEB-INF/base.xhtml"/>
         <div class="container">
-        <h:form>
-            <h:panelGrid columns="3" cellpadding="5">
-                <p:outputLabel for="horario" value="Data"/>
-            <p:calendar id="horario" timeZone="BRT" required="true" requiredMessage="Necessário" value="#{promocaoBean.promocao.horario}"/>
-            <p:message for="horario"/>
-            <p:outputLabel for="site" value="Site"/>
-            <p:selectOneMenu id="site" value="#{promocaoBean.promocao.site}" required="true" requiredMessage="Necessário">                          
-                             <f:selectItems value="#{siteVendasBean.siteVendas}"/>
-                             <f:converter converterId="SiteConverter"/>
-            </p:selectOneMenu>
-            <p:message for="site"/>
-            <p:outputLabel for="preco" value="Preco"/>
-            <p:inputNumber id="preco" minValue="0.00" value="#{promocaoBean.promocao.preco}" required="true" requiredMessage="Necessário"/>
-            <p:message for="preco"/>
-            <p:commandButton value="Enviar" action="#{promocaoBean.salva()}" ajax="false"/>
-            </h:panelGrid>
-        </h:form>  
+           
+            <h:form>
+                <p><h2> Inserir promoção</h2></p>
+                <h:panelGrid columns="3" cellpadding="5">
+                    <p:outputLabel for="horario" value="Data"/>
+                    <p:calendar id="horario" timeZone="BRT" required="true" requiredMessage="Necessário" value="#{promocaoBean.promocao.horario}"/>
+                    <p:message for="horario"/>
+                    <p:outputLabel for="site" value="Site"/>
+                    <p:selectOneMenu id="site" value="#{promocaoBean.promocao.site}" required="true" requiredMessage="Necessário">                          
+                        <f:selectItems value="#{siteVendasBean.siteVendas}"/>
+                        <f:converter converterId="SiteConverter"/>
+                    </p:selectOneMenu>
+                    <p:message for="site"/>
+                    <p:outputLabel for="preco" value="Preco"/>
+                    <p:inputNumber id="preco" minValue="0.00" value="#{promocaoBean.promocao.preco}" required="true" requiredMessage="Necessário"/>
+                    <p:message for="preco"/>
+                    <p:commandButton value="Cadastrar" action="#{promocaoBean.salva()}" ajax="false"/>
+                    
+                </h:panelGrid>
+                
+                 </h:form>
+            <h:form>
+                <p><h2> Buscar promoção</h2></p>
+                <h:panelGrid columns="3" cellpadding="5" >
+                    <p:outputLabel for="sala" value="CNPJ"/>
+                    <p:selectOneMenu id="sala"  value="#{promocaoBean.promocao.sala}" required="true" requiredMessage="Necessário">                          
+                        <f:selectItems value="#{salaTeatroBean.salasTeatro}"/>
+                        <f:converter converterId="TeatroConverter"/>
+                    </p:selectOneMenu>
+                    <p:message for="sala"/>
+                    <p:commandButton 
+                        action = "#{salaTeatroBean.fromTheater()}" value="Buscar" ajax="false" /> 
+                </h:panelGrid>
+                
+            </h:form>  
         </div>
     </body>
 </html>

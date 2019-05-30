@@ -8,26 +8,26 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"> 
     <h:head>  
-    <title>#{msg('page.title')}</title>
+    <title>#{msg['page.title']}</title>
         <h:outputStylesheet name="/css/style.css"/>
     </h:head>  
     <h:body> 
         <ui:include src="/WEB-INF/base.xhtml"/>
         <div class="container">
-                <h2><h:outputText value="#msg('listtheater.title')"/></h2> 
+                <h2><h:outputText value="#{msg['listtheater.title']}"/></h2> 
           <h:form>
                 <h:panelGrid columns="2" width="100%" style="text-align:right">
                     <p:inputText id="cidade" value="#{salaTeatroBean.teatro.cidade}" 
-                                             a:placeholder="#{msg('search.city.label')}"
+                                             a:placeholder="#{msg['search.city.label']}"
                                              maxlength="40" required="false" 
-                                             requiredMessage="#{msg('verification.required')}" 
-                                             validatorMessage="#{msg('verification.city.message')}">  
+                                             requiredMessage="#{msg['verification.required']}" 
+                                             validatorMessage="#{msg['verification.city.message']}">  
                     <f:validateRegex pattern="[A-zÀ-ú ]+"/>
             </p:inputText>
            </h:panelGrid>
              <h:panelGrid width="100%" style="text-align: right">
             <h:commandButton 
-                action = "#{salaTeatroBean.fromCity()}" value="Buscar">  <!-- criar outra datatable -->
+                action = "#{salaTeatroBean.fromCity()}" value="Buscar"> 
             </h:commandButton>  
             </h:panelGrid>
               

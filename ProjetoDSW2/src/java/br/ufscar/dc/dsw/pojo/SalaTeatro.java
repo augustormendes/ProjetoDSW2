@@ -79,5 +79,16 @@ public class SalaTeatro implements Serializable {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    } 
+    }
+    
+    public boolean equals(Object obj) {
+        if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (!(obj instanceof SalaTeatro))
+		return false;
+	SalaTeatro other = (SalaTeatro) obj;
+	return other.CNPJ.equals(this.CNPJ);
+    }
 }

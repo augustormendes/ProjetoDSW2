@@ -68,12 +68,12 @@ public class PromocaoDAO extends GenericDAO<Promocao> {
         tx.commit();
     }
     
-    public List<Promocao> getByCNPJ(String cnpj) {
+    public List<Promocao> getByCNPJ(String CNPJ) {
         EntityManager em = this.getEntityManager();
         String sql = "SELECT p FROM Promocao p "
-                + "WHERE p.CNPJ = :cnpj";
+                + "WHERE p.CNPJ = :CNPJ";
         TypedQuery<Promocao> q = em.createQuery(sql, Promocao.class);
-        q.setParameter("cnpj", cnpj);
+        q.setParameter("CNPJ", CNPJ);
         return q.getResultList();
     }
     
