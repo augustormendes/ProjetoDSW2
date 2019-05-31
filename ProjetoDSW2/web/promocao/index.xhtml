@@ -14,11 +14,11 @@
     <h:body> 
         <ui:include src="/WEB-INF/base.xhtml"/>
         <div class="container">
-                <h2><h:outputText value="#{msg['sales.title']}"/></h2> 
+                <h2><h:outputText value="#{msg['promo.title']}"/></h2> 
           <h:form>
           </h:form>
                 <h:form>
-            <p:dataTable value="#{promocaoBean.salesOfTheater}" var="sale"> 
+            <p:dataTable value="#{promocaoBean.minhasPromocoes}" var="sale"> 
                 <p:column headerText="Id">  
                     <h:outputText value="#{sale.id}"/>  
                 </p:column>  
@@ -36,7 +36,7 @@
             <center>
                 <h:commandButton action = "#{promocaoBean.cadastra()}"   
                                  value="Cadastra"></h:commandButton>
-            <br>
+            <br/>
                 <h:commandButton action = "#{promocaoBean.volta()}"   
                                  value="Voltar"></h:commandButton>
             </center>

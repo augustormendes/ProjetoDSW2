@@ -70,17 +70,17 @@ public class PromocaoBean {
         PromocaoDAO dao = new PromocaoDAO();
         return dao.getAll();
     }
-
-    public List<Promocao> getSalesOfTheater() {
+    
+    public List<Promocao> getFromTheater(String cnpj) throws SQLException {
+        PromocaoDAO dao = new PromocaoDAO();
+        return dao.getByCNPJ(cnpj);
+    }
+     
+    public List<Promocao> getMinhasPromocoes() {
         PromocaoDAO dao = new PromocaoDAO();
         User u = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         SalaTeatro t = dao.getSalaFromEmail(u.getUsername());
         String cnpj = t.getCNPJ();
-        return dao.getByCNPJ(cnpj);
-    }
-    
-     public List<Promocao> getFromTheater(String cnpj) throws SQLException {
-        PromocaoDAO dao = new PromocaoDAO();
         return dao.getByCNPJ(cnpj);
     }
     

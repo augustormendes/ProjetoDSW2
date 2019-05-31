@@ -34,7 +34,7 @@
         
         <h:form>
             <c:set var="CNPJ" value="#{promocaoBean.promocao.sala.CNPJ}"/>
-            <p:dataTable value="#{salaTeatroBean.getFromTheater(CNPJ)}" var="promocao">  
+            <p:dataTable value="#{promocaoBean.getFromTheater(CNPJ)}" var="promocao">  
                 <p:column headerText="Id">  
                     <h:outputText value="#{promocao.id}"/>  
                 </p:column> 

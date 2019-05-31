@@ -86,12 +86,6 @@ public class SalaTeatroBean implements Serializable {
         return dao.getByCity(city);
     }
     
-    public List<Promocao> getFromTheater(String cnpj) throws SQLException  {
-        SalaTeatroDAO dao = new SalaTeatroDAO();        
-        
-        return dao.getByCNPJ(cnpj);
-    }
-    
     public String fromTheater(){
         return"/promocao/indexFromTheater.xhtml";
     }

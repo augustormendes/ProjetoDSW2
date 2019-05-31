@@ -57,15 +57,6 @@ public class SalaTeatroDAO extends GenericDAO<SalaTeatro> {
         tx.commit();
     }
     
-    public List<Promocao> getByCNPJ(String cnpj) {
-        EntityManager em = this.getEntityManager();
-        String sql = "SELECT promo FROM Promocao promo "
-                + "WHERE promo.sala.CNPJ = :cnpj";
-        TypedQuery<Promocao> q = em.createQuery(sql, Promocao.class);
-        q.setParameter("cnpj", cnpj);
-        return q.getResultList();
-    }
-    
     public List<SalaTeatro> getByCity(String city) {
         EntityManager em = this.getEntityManager();
         String sql = "SELECT s FROM SalaTeatro s "
