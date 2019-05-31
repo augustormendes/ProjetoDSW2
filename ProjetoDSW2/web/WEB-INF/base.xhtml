@@ -9,6 +9,7 @@
         <p:menubar>
             <p:menuitem value ="#{msg['page.title']}" url="/ProjetoDSW2/" style="color: #eeeef2 !important"/>
             <p:menuitem value ="#{msg['theaters.title']}" action="#{salaTeatroBean.lista()}" ajax="false"/>
+            <p:menuitem value ="#{msg['listpromo.title']}" action="#{promocaoBean.formAcessivel()}" ajax="false"/>
             
             <sec:authorize ifAllGranted="ROLE_ADMIN">
               <p:menuitem value ="#{msg['site.title']}" action="#{siteVendasBean.lista()}" ajax="false"/>
