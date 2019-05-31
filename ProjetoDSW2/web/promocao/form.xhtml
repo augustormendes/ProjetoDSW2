@@ -23,7 +23,7 @@ and open the template in the editor.
                 <p><h2> Inserir promoção</h2></p>
                 <h:panelGrid columns="3" cellpadding="5">
                     <p:outputLabel for="horario" value="Data"/>
-                    <p:calendar id="horario" timeZone="BRT" required="true" requiredMessage="Necessário" value="#{promocaoBean.promocao.horario}"/>
+                    <p:calendar id="horario" timeZone="BRT" mindate="#{promocaoBean.currentDate}" pattern="MM/dd/yyyy HH:mm" required="true" requiredMessage="Necessário" value="#{promocaoBean.promocao.horario}"/>
                     <p:message for="horario"/>
                     <p:outputLabel for="site" value="Site"/>
                     <p:selectOneMenu id="site" value="#{promocaoBean.promocao.site}" required="true" requiredMessage="Necessário">                          
