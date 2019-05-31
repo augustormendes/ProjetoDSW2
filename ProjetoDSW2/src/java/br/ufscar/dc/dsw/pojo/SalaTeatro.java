@@ -25,7 +25,7 @@ public class SalaTeatro implements Serializable {
     private String cidade;
     
     
-    @OneToOne (cascade=CascadeType.PERSIST) @JoinColumn
+    @OneToOne (cascade=CascadeType.ALL) @JoinColumn
     private Usuario usuario;
     @OneToMany (mappedBy = "sala") private Set<Promocao> promocoes;
 

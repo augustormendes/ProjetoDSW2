@@ -24,7 +24,7 @@ public class SiteVendas implements Serializable{
    
     private String nome;
     private String telefone;
-    @OneToOne (cascade=CascadeType.PERSIST) @JoinColumn(name = "USUARIO_ID")
+    @OneToOne (cascade=CascadeType.ALL) @JoinColumn(name = "USUARIO_ID")
     private Usuario usuario;
     
     public Long getId() {
