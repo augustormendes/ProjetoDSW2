@@ -15,7 +15,7 @@
             </sec:authorize>
             
             <sec:authorize ifAllGranted="ROLE_TEATRO">
-              <p:menuitem value ="Promoção" action="#{promocaoBean.lista()}" ajax="false"/>
+              <p:menuitem value="Minhas Promoções" action="#{promocaoBean.lista()}" ajax="false"/>
             </sec:authorize>
             <sec:authorize ifAllGranted="ROLE_SITE">
                 <p:menuitem value ="Promoção" action="#{siteVendasBean.listaPromocoes()}" ajax="false"/>
