@@ -16,7 +16,7 @@
     <h:body> 
         <ui:include src="/WEB-INF/base.xhtml"/>
         <div class="container">
-        <h2><h:outputText value="Lista promoções por teatro"/></h2> 
+        <h2><h:outputText value="#{msg['promoTeatro.title']}"/></h2> 
       
         <h:form>
                 <h:panelGrid columns="3" cellpadding="5" >
@@ -27,7 +27,7 @@
                     </p:selectOneMenu>
                     <p:message for="sala"/>
                     <p:commandButton 
-                        action = "#{salaTeatroBean.fromTheater()}" value="Buscar" ajax="false" /> 
+                        action = "#{salaTeatroBean.fromTheater()}" value="#{msg['search.label']}" ajax="false" /> 
                 </h:panelGrid>
                 
             </h:form> 
@@ -38,25 +38,25 @@
                 <p:column headerText="Id">  
                     <h:outputText value="#{promocao.id}"/>  
                 </p:column> 
-                <p:column headerText="Horario">  
+                <p:column headerText="#{msg['time.label']}">  
                     <h:outputText value="#{promocao.horario}"/>  
                 </p:column>  
-                <p:column headerText="Preço">  
+                <p:column headerText="#{msg['price.label']}">  
                     <h:outputText value="#{promocao.preco}"/>  
                 </p:column>  
                 <p:column headerText="CNPJ">  
                     <h:outputText value="#{promocao.sala.CNPJ}"/>  
                 </p:column>  
-                <p:column headerText="Site">  
+                <p:column headerText="#{msg['name.label']}">  
                     <h:outputText value="#{promocao.site.nome}"/>  
                 </p:column>  
-                <p:column headerText="Edição">
+                <p:column headerText="#{msg['edit.label']}">
                     <h:commandButton action = "#{promocaoBean.edita(promocao.id)}" value="Editar">  
                     </h:commandButton>  
                 </p:column>
-                <p:column headerText="Remoção">
+                <p:column headerText="#{msg['remove.label']}">
                     <h:commandButton action = "#{promocaoBean.delete(promocao)}" value="Deletar" 
-                                     onclick="return confirm('Deseja realmente excluir ?');">  
+                                     onclick="return confirm('#{msg['remove.confirm']}');">  
                     </h:commandButton>  
                 </p:column>
                 
@@ -65,12 +65,12 @@
             <sec:authorize ifAllGranted="ROLE_TEATRO">
             <center>
                 <h:commandButton action = "#{promocaoBean.cadastra()}"   
-                                 value="Cadastrar"></h:commandButton>
+                                 value="#{msg['newregister.label']}"></h:commandButton>
             </center>
             <br/>
             <center>
                 <h:commandButton action = "#{promocaoBean.lista()}"   
-                                 value="Voltar"></h:commandButton>
+                                 value="#{msg['back.label']}"></h:commandButton>
             </center>
             </sec:authorize>
         </h:form>  
