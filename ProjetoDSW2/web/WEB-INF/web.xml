@@ -34,12 +34,12 @@
     
    <error-page>
 	<error-code>404</error-code>
-	<location>/erro.xhtml</location>
+	<location>/error/error404.xhtml</location>
     </error-page>
     
     <error-page>
 	<error-code>403</error-code>
-	<location>/faces/erro.xhtml</location>
+	<location>/error/error403.xhtml</location>
     </error-page>
     
     
