@@ -1,6 +1,7 @@
 
 package br.ufscar.dc.dsw.dao;
 
+import br.ufscar.dc.dsw.pojo.Promocao;
 import br.ufscar.dc.dsw.pojo.SiteVendas;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -65,5 +66,15 @@ public class SiteVendasDAO extends GenericDAO<SiteVendas> {
         q.setParameter("url", url);
         return q.getSingleResult();
     }
+    
+     public List<Promocao> getPromocoesFromEmail(String email){
+       EntityManager em = this.getEntityManager();
+              String sql = "SELECT promocao FROM Promocao promocao "
+                      + "WHERE promocao.site.usuario.email = :email";
+              TypedQuery<Promocao> q = em.createQuery(sql,Promocao.class);
+              q.setParameter("email",email);
+              return q.getResultList();
+
+   }
     
 }

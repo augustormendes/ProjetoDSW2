@@ -7,6 +7,7 @@ package br.ufscar.dc.dsw.bean;
 
 import br.ufscar.dc.dsw.dao.SiteVendasDAO;
 import br.ufscar.dc.dsw.pojo.Papel;
+import br.ufscar.dc.dsw.pojo.Promocao;
 import br.ufscar.dc.dsw.pojo.SiteVendas;
 import br.ufscar.dc.dsw.pojo.Usuario;
 import java.io.Serializable;
@@ -14,6 +15,8 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
@@ -28,6 +31,16 @@ public class SiteVendasBean implements Serializable {
     private SiteVendas site;
     public String lista(){
         return "/site/index.xhtml?faces-redirect=true";
+    }
+    public String listaPromocoes(){
+        return "/site/indexPromocao.xhtml?faces-redirect=true";
+    }
+    
+    public List<Promocao> getPromocoes(){
+        SiteVendasDAO dao= new SiteVendasDAO();
+        User u = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        return dao.getPromocoesFromEmail(u.getUsername());
     }
     
     public String cadastra(){

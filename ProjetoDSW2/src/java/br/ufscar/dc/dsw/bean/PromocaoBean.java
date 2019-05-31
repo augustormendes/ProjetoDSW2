@@ -11,6 +11,7 @@ import br.ufscar.dc.dsw.pojo.SalaTeatro;
 import br.ufscar.dc.dsw.pojo.Usuario;
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -69,6 +70,14 @@ public class PromocaoBean {
         PromocaoDAO dao = new PromocaoDAO();
         return dao.getAll();
     }
+
+    public List<Promocao> getSalesOfTheater() {
+        PromocaoDAO dao = new PromocaoDAO();
+        User u = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        SalaTeatro t = dao.getSalaFromEmail(u.getUsername());
+        String cnpj = t.getCNPJ();
+        return dao.getByCNPJ(cnpj);
+    }
     
      public List<Promocao> getFromTheater(String cnpj) throws SQLException {
         PromocaoDAO dao = new PromocaoDAO();
@@ -85,5 +94,8 @@ public class PromocaoBean {
     
     public Promocao getPromocao(){
         return promocao;
+    }
+    public Date getCurrentDate(){
+        return new Date();
     }
 }
