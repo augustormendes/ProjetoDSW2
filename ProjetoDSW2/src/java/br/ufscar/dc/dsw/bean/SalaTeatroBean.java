@@ -5,8 +5,10 @@
  */
 package br.ufscar.dc.dsw.bean;
 
+import br.ufscar.dc.dsw.dao.PromocaoDAO;
 import br.ufscar.dc.dsw.dao.SalaTeatroDAO;
 import br.ufscar.dc.dsw.pojo.Papel;
+import br.ufscar.dc.dsw.pojo.Promocao;
 import br.ufscar.dc.dsw.pojo.SalaTeatro;
 import br.ufscar.dc.dsw.pojo.Usuario;
 import java.io.Serializable;
@@ -14,6 +16,8 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
@@ -80,6 +84,16 @@ public class SalaTeatroBean implements Serializable {
     public List<SalaTeatro> getFromCity(String city) throws SQLException {
         SalaTeatroDAO dao = new SalaTeatroDAO();
         return dao.getByCity(city);
+    }
+    
+    public List<Promocao> getFromTheater(String cnpj) throws SQLException  {
+        SalaTeatroDAO dao = new SalaTeatroDAO();        
+        
+        return dao.getByCNPJ(cnpj);
+    }
+    
+    public String fromTheater(){
+        return"/promocao/indexFromTheater.xhtml";
     }
     
     public String fromCity(){

@@ -1,5 +1,6 @@
 package br.ufscar.dc.dsw.dao;
 
+import br.ufscar.dc.dsw.pojo.Promocao;
 import br.ufscar.dc.dsw.pojo.SalaTeatro;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -56,13 +57,13 @@ public class SalaTeatroDAO extends GenericDAO<SalaTeatro> {
         tx.commit();
     }
     
-    public SalaTeatro getByCNPJ(String cnpj) {
+    public List<Promocao> getByCNPJ(String cnpj) {
         EntityManager em = this.getEntityManager();
-        String sql = "SELECT s FROM SalaTeatro s "
-                + "WHERE s.CNPJ = :cnpj";
-        TypedQuery<SalaTeatro> q = em.createQuery(sql, SalaTeatro.class);
+        String sql = "SELECT promo FROM Promocao promo "
+                + "WHERE promo.sala.CNPJ = :cnpj";
+        TypedQuery<Promocao> q = em.createQuery(sql, Promocao.class);
         q.setParameter("cnpj", cnpj);
-        return q.getSingleResult();
+        return q.getResultList();
     }
     
     public List<SalaTeatro> getByCity(String city) {

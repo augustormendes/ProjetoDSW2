@@ -14,4 +14,11 @@
             <var>msg</var>
         </resource-bundle>
     </application>
+    
+    <converter>
+		<display-name>TeatroConverter</display-name>
+		<converter-id>TeatroConverter</converter-id>
+		<converter-class>br.ufscar.dc.dsw.converter.TeatroConverter</converter-class>
+	</converter>
+    
 </faces-config>
