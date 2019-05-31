@@ -23,15 +23,22 @@
 
 .ui-menuitem {
   padding-right: 30px !important;
-  color: aqua !important;
+  color: white;
+}
 
+.ui-menuitem:hover {
+  background-color: #212529 !important;
 }
 
 .ui-menubar .ui-menuitem-link {
   color: #b7acac !important;
 }
 
-.ui-state-hover {
+.ui-menubar .ui-menuitem-link .ui-state-hover {
+  color: white;
+}
+
+.ui-menubar .ui-state-hover {
   background-color: #212529 !important;
   background-image: none !important;
 }
