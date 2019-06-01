@@ -33,15 +33,15 @@
                 <p:column headerText="Email">  
                     <h:outputText value="#{site.usuario.email}"/>  
                 </p:column> 
-                 <p:column headerText="Senha">  
+                <p:column headerText="#{msg['password.label']}">  
                     <h:outputText value="#{site.usuario.senha}"/>  
                 </p:column>
                 <p:column headerText="#{msg['edit.label']}">  
-                    <h:commandButton action = "#{siteVendasBean.edita(site.id)}" value="Editar">  
+                    <h:commandButton action = "#{siteVendasBean.edita(site.id)}" value="#{msg['edit.label']}">  
                     </h:commandButton>  
                 </p:column>  
                 <p:column headerText="#{msg['remove.label']}">  
-                    <h:commandButton action = "#{siteVendasBean.delete(site.id)}" value="Deleta" 
+                    <h:commandButton action = "#{siteVendasBean.delete(site.id)}" value="#{msg['remove.label']}" 
                                                                                   onclick="return confirm('#{msg['remove.confirm']}');">  
                     </h:commandButton>  
                 </p:column>      
@@ -52,13 +52,13 @@
             <sec:authorize ifAllGranted="ROLE_ADMIN">
             <center>
                 <h:commandButton action = "#{siteVendasBean.cadastra()}"   
-                                 value="Cadastrar"></h:commandButton>
+                           value="#{msg['newregister.label']}"></h:commandButton>
             </center>
             </sec:authorize>
             <br/>
             <center>
                 <h:commandButton action = "#{siteVendasBean.volta()}"   
-                                 value="Voltar"></h:commandButton>
+                           value="#{msg['back.label']}"></h:commandButton>
             </center>
         </h:form>  
         </div>
