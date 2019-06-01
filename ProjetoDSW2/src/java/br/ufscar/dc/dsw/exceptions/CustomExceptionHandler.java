@@ -40,32 +40,30 @@ public class CustomExceptionHandler extends ExceptionHandlerWrapper {
  
     @Override
     public void handle() throws FacesException {
- 
-        final Iterator iterator = getUnhandledExceptionQueuedEvents().iterator();
-        while (iterator.hasNext()) {
-            ExceptionQueuedEvent event = (ExceptionQueuedEvent) iterator.next();
-            ExceptionQueuedEventContext context = (ExceptionQueuedEventContext) event.getSource();
- 
-            Throwable exception = context.getException();
- 
-            try {
+        
+        final Iterator<ExceptionQueuedEvent> queue = getUnhandledExceptionQueuedEvents().iterator();
 
-                requestMap.put("exceptionMessage", exception.getMessage());
- 
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage
-                    (FacesMessage.SEVERITY_ERROR, "O sistema se recuperou de um erro inesperado.", ""));
- 
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage
-                    (FacesMessage.SEVERITY_INFO, "Você pode continuar usando o sistema normalmente!", ""));
- 
-                navigationHandler.handleNavigation(facesContext, null, null);
- 
-                facesContext.renderResponse();
+        while (queue.hasNext()){
+            ExceptionQueuedEvent item = queue.next();
+            ExceptionQueuedEventContext exceptionQueuedEventContext = (ExceptionQueuedEventContext)item.getSource();
+
+            try {
+                Throwable throwable = exceptionQueuedEventContext.getException();
+
+                FacesContext context = FacesContext.getCurrentInstance();
+                Map<String, Object> requestMap = context.getExternalContext().getRequestMap();
+                NavigationHandler nav = context.getApplication().getNavigationHandler();
+
+                requestMap.put("error-message", throwable.getMessage());
+                nav.handleNavigation(context, null, "/error");
+                context.renderResponse();
+
             } finally {
-                iterator.remove();
+                queue.remove();
             }
         }
-        getWrapped().handle();
     }
     
 }
+    
+

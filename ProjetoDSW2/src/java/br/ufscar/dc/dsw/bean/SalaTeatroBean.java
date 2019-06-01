@@ -50,6 +50,7 @@ public class SalaTeatroBean implements Serializable {
     }
    
     public String salva(){
+        
         SalaTeatroDAO dao = new SalaTeatroDAO();
         Papel papel = new Papel();
         papel.setEmail(teatro.getUsuario().getEmail());
@@ -58,6 +59,7 @@ public class SalaTeatroBean implements Serializable {
         teatro.getUsuario().setSenha(encoder.encode(teatro.getUsuario().getSenha()));
         teatro.getUsuario().setPapel(papel);
         teatro.getUsuario().setAtivo(true);
+        
         if(teatro.getId() == null){
             dao.save(teatro);
         }else{

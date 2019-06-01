@@ -22,7 +22,7 @@ public class Usuario implements Serializable {
 private String email;
 private String senha;
 private boolean ativo;
-@OneToOne(cascade=CascadeType.PERSIST) @JoinColumn private Papel papel;
+@OneToOne(cascade=CascadeType.ALL) @JoinColumn private Papel papel;
 
 
     public boolean getAtivo() {
