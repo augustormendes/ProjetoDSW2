@@ -12,4 +12,4 @@ Criação de tabela para o usuário admin é feita automaticamento, dessa forma,
  - Email: admin@admin
  - Senha: admin
  
-As bibliotecas dependentes estão localizada no diretório /lib
+As bibliotecas dependentes estão localizadas no diretório /lib
