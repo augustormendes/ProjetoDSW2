@@ -20,12 +20,11 @@
         <converter-id>TeatroConverter</converter-id>
         <converter-class>br.ufscar.dc.dsw.converter.TeatroConverter</converter-class>
     </converter>
-        
+     
     <factory>
         <exception-handler-factory>
             br.ufscar.dc.dsw.exceptions.CustomExceptionHandlerFactory
         </exception-handler-factory>
     </factory>
-    
-    
+      
 </faces-config>
