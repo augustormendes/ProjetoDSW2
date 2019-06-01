@@ -12,7 +12,7 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
-        <title>Cadastro de Teatro</title>
+        <title>#{msg['page.title']}</title>
         <h:outputStylesheet name="/css/style.css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
@@ -25,7 +25,7 @@ and open the template in the editor.
                     <c:when test="#{salaTeatroBean.teatro.usuario.senha == null}">
                 <p:outputLabel for="CNPJ" value ="CNPJ:"/>
                 <p:inputMask id="CNPJ" value="#{salaTeatroBean.teatro.CNPJ}" mask="99.999.999/9999-99" required="true"
-                             requiredMessage="Necessário"/>
+                                      requiredMessage="#{msg['verification.required']}"/>
                 <p:message for="CNPJ"/>
                     </c:when>
                     <c:otherwise>
@@ -33,32 +33,36 @@ and open the template in the editor.
                     </c:otherwise>
                 </c:choose>
                 
-                <p:outputLabel for="nome" value ="Nome:"/>
+                <p:outputLabel for="nome" value ="#{msg['name.label']}"/>
                 <p:inputText id="nome" value="#{salaTeatroBean.teatro.nome}" maxlength="40" required="true"
-                             requiredMessage="Necessário" validatorMessage="Caracter inválido">
+                           requiredMessage="#{msg['verification.required']}" 
+                           validatorMessage="#{msg['verification.invalid.message']}">
                     <f:validateRegex pattern="[A-zÀ-ú ]+"/>
                     </p:inputText>
                 <p:message for="nome"/>
                 
-                <p:outputLabel for ="cidade" value="Cidade:"/>
-                <p:inputText id="cidade" value="#{salaTeatroBean.teatro.cidade}" required="true" requiredMessage="Necessário"
-                             validatorMessage="Caracter inválido">
+                <p:outputLabel for ="cidade" value="#{msg['city.label']}"/>
+                <p:inputText id="cidade" value="#{salaTeatroBean.teatro.cidade}" required="true" 
+                           requiredMessage="#{msg['verification.required']}" 
+                           validatorMessage="#{msg['verification.invalid.message']}">
                     <f:validateRegex pattern="[A-zÀ-ú ]+"/>
                 </p:inputText>
                 <p:message for="cidade"/>
                 
                 <h:outputLabel for="email" value="Email:"/>
-                <p:inputText id="email" value="#{salaTeatroBean.teatro.usuario.email}" required="true" requiredMessage="Necessário"
-                             validatorMessage="Formato incorreto. Exemplo: ex@gmail.com">
+                <p:inputText id="email" value="#{salaTeatroBean.teatro.usuario.email}" required="true" 
+                            requiredMessage="#{msg['verification.required']}"
+                            validatorMessage="#{msg['verificatio.email.message']}">
                  <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
                 </p:inputText>
                 <p:message for="email"/>
                 
-                <p:outputLabel for="senha" value="Senha:" />
-                <p:password id="senha" value="#{salaTeatroBean.teatro.usuario.senha}" required="true" requiredMessage="Necessário" />
+                <p:outputLabel for="senha" value="#{msg['password.label']}" />
+                <p:password id="senha" value="#{salaTeatroBean.teatro.usuario.senha}" required="true" 
+                                                                                      requiredMessage="#{msg['verification.required']}"/>
                 <p:message for="senha"/>
                 
-                <p:commandButton value="Enviar" action="#{salaTeatroBean.salva()}" ajax="false"/>
+                <p:commandButton value="#{msg['send.label']}" action="#{salaTeatroBean.salva()}" ajax="false"/>
             </h:panelGrid>
         </h:form>
         </div>
