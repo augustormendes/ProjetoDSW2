@@ -22,23 +22,23 @@
                 <p:column headerText="Id">  
                     <h:outputText value="#{sale.id}"/>  
                 </p:column>  
-                <p:column headerText="Preço">  
+                <p:column headerText="#{msg['price.label']}">  
                     <h:outputText value="#{sale.preco}"/>  
                 </p:column>  
                 <p:column headerText="CNPJ">  
                     <h:outputText value="#{sale.nome}"/>  
                 </p:column>  
-                <p:column headerText="Cidade">  
+                <p:column headerText="#{msg['city.label']}">  
                     <h:outputText value="#{sale.horario}"/>  
                 </p:column>  
             </p:dataTable>
             <br/>
             <center>
                 <h:commandButton action = "#{promocaoBean.cadastra()}"   
-                                 value="Cadastra"></h:commandButton>
+                                  value="#{msg['newregister.label']}"></h:commandButton>
             <br/>
                 <h:commandButton action = "#{promocaoBean.volta()}"   
-                                 value="Voltar"></h:commandButton>
+                                  value="#{msg['back.label']}"></h:commandButton>
             </center>
         </h:form>  
         </div>
